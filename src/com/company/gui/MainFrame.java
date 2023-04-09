@@ -1301,8 +1301,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void SearchMedicoButtonReservarTurnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchMedicoButtonReservarTurnoMousePressed
         populateMedicoComboBox(SearchMedicoReservarTurno.getText());
         if (MedicoComboBoxReservarTurno.getItemCount() > 0) {
-            populateConsultasDisponibles();
+            MedicoComboBoxReservarTurno.setSelectedIndex(0);
+//            populateConsultasDisponibles();
         }
+//        MedicoComboBoxReservarTurno.setSelectedIndex(0);
 //        populateConsultasDisponibles();
     }//GEN-LAST:event_SearchMedicoButtonReservarTurnoMousePressed
 

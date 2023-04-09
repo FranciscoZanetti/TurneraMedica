@@ -33,7 +33,7 @@ public class DAOMedico implements IDAO<Medico>{
             preparedStatement.setString(3, object.getApellido());
             preparedStatement.setInt(4, object.getHonorarios());
             preparedStatement.setString(5, object.getObrasocial());
-            preparedStatement.setInt(6, 1);
+            preparedStatement.setInt(6, 0);
             preparedStatement.setString(7, object.getPassword());
             int result = preparedStatement.executeUpdate();
             System.out.println("Registros ingresados " + result);

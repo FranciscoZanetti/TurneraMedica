@@ -107,6 +107,32 @@ public class DAOConsultorioMedico{
         }
     }
     
+    public void deleteByMedico(int dni) throws DAOException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try{
+//            Class.forName(DB_JDBC_DRIVER);
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            preparedStatement = connection.prepareStatement("DELETE FROM CONSULTORIOS_MEDICOS WHERE DNI_MEDICO=? ");
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1, dni);
+            int result = preparedStatement.executeUpdate();
+            System.out.println("Registros eliminados " + result);
+        }catch (SQLException exception){
+            exception.printStackTrace();
+            throw new DAOException(exception.getMessage());
+        }finally {
+            try {
+//                if (preparedStatement != null){
+                    preparedStatement.close();
+//                }
+            }catch (SQLException exception){
+                exception.printStackTrace();
+                throw new DAOException(exception.getMessage());
+            }
+        }
+    }
+    
     public ConsultorioMedico search(int primaryKey) throws DAOException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

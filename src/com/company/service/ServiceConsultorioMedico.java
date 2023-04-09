@@ -49,6 +49,14 @@ public class ServiceConsultorioMedico {
         }
     }
     
+    public void deleteByMedico(int dni) throws ServiceException{
+        try{
+            daoConsultorioMedico.delete(dni);
+        }catch (DAOException exception){
+            throw new ServiceException(exception.getMessage());
+        }
+    }
+    
     public ConsultorioMedico search(int primaryKey) throws ServiceException{
         ConsultorioMedico consultorioMedico = null;
         try{

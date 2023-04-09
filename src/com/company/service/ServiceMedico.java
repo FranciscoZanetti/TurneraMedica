@@ -12,6 +12,7 @@ import com.company.validaciones.ValidarNumeroPositivo;
 import com.company.validaciones.ValidarPersona;
 import com.company.validaciones.ValidarSoloLetras;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -102,22 +103,28 @@ public class ServiceMedico {
     }
     
     public ArrayList<Medico> searchAll(int activo) throws ServiceException{
-        ArrayList<Medico> medicos;
+        ArrayList<Medico> medicos = new ArrayList<>();
         try {
             medicos = daoMedico.searchAll(activo);
-            return medicos;
+//            return medicos;
         }catch (DAOException exception){
             throw new ServiceException("No se pudieron encontrar resultados");
+        }
+        finally{
+            return medicos;
         }
     }
     
     public ArrayList<Medico> searchAllByApellido(int activo, String apellido) throws ServiceException{
-        ArrayList<Medico> medicos;
+        ArrayList<Medico> medicos = new ArrayList<>();
         try {
             medicos = daoMedico.searchAllByApellido(activo, apellido);
-            return medicos;
+//            return medicos;
         }catch (DAOException exception){
             throw new ServiceException("No se pudieron encontrar resultados");
+        }
+        finally{
+            return medicos;
         }
     }
     
