@@ -31,13 +31,13 @@ public class DAOConsulta {
         
         try{
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            preparedStatement = connection.prepareStatement("INSERT INTO CONSULTAS(FECHA, HORA, MEDICO, PACIENTE, STATUS, CONSULTORIO, PRECIO) VALUES(?,?,?,?,?,?) ");
+            preparedStatement = connection.prepareStatement("INSERT INTO CONSULTAS(FECHA, HORA, MEDICO, PACIENTE, STATUS, CONSULTORIO, PRECIO) VALUES(?,?,?,?,?,?,?) ");
             System.out.println(preparedStatement);
             preparedStatement.setDate(1, object.getFechaAsDate());
             preparedStatement.setTime(2, object.getHoraAsTime());
             preparedStatement.setInt(3, object.getMedico().getDNI());
             preparedStatement.setInt(4, object.getPaciente().getDNI());
-            preparedStatement.setInt(4, 1);
+            preparedStatement.setInt(5, 1);
             preparedStatement.setString(6, object.getConsultorio());
             preparedStatement.setInt(7, object.getPrecio());
             int result = preparedStatement.executeUpdate();

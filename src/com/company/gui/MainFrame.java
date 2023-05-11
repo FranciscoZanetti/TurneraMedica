@@ -10,6 +10,7 @@ import com.company.entidades.Medico;
 import com.company.entidades.Paciente;
 import com.company.entidades.Persona;
 import com.company.gui.ConsultaGui.ConsultaInfoPanel;
+import com.company.gui.Interfaces.PanelEventListener;
 import com.company.gui.MedicoGui.MedicoListCellRenderer;
 import com.company.service.ServiceConsulta;
 import com.company.service.ServiceConsultorioMedico;
@@ -17,10 +18,15 @@ import com.company.service.ServiceException;
 import com.company.service.ServiceMedico;
 import com.company.service.ServicePaciente;
 import com.company.service.ServicePersona;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -28,12 +34,14 @@ import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+import javax.swing.Timer;
 import javax.swing.text.DateFormatter;
 import org.w3c.dom.css.RGBColor;
 
@@ -41,7 +49,7 @@ import org.w3c.dom.css.RGBColor;
  *
  * @author User
  */
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     
     private Paciente pacienteLogged;
     private Medico medicoLogged;
@@ -102,6 +110,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         MedicoComboBoxReservarTurno = new javax.swing.JComboBox<>();
         jSeparator10 = new javax.swing.JSeparator();
+        ReservarButtonReservarTurno = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
         LoginPanel = new javax.swing.JPanel();
         LeftLoginPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -347,16 +357,8 @@ public class MainFrame extends javax.swing.JFrame {
         TurnosDisponiblesContenedorReservarTurno.setLayout(new javax.swing.BoxLayout(TurnosDisponiblesContenedorReservarTurno, javax.swing.BoxLayout.Y_AXIS));
         TurnosDisponiblesReservarTurno.setViewportView(TurnosDisponiblesContenedorReservarTurno);
 
-        javax.swing.GroupLayout TurnoSeleccionadoReservarTurnoLayout = new javax.swing.GroupLayout(TurnoSeleccionadoReservarTurno);
-        TurnoSeleccionadoReservarTurno.setLayout(TurnoSeleccionadoReservarTurnoLayout);
-        TurnoSeleccionadoReservarTurnoLayout.setHorizontalGroup(
-            TurnoSeleccionadoReservarTurnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        TurnoSeleccionadoReservarTurnoLayout.setVerticalGroup(
-            TurnoSeleccionadoReservarTurnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 69, Short.MAX_VALUE)
-        );
+        TurnoSeleccionadoReservarTurno.setMinimumSize(new java.awt.Dimension(866, 72));
+        TurnoSeleccionadoReservarTurno.setLayout(new java.awt.BorderLayout());
 
         ConsultorioComboBoxReservarTurno.setBackground(new java.awt.Color(255, 255, 255));
         ConsultorioComboBoxReservarTurno.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
@@ -369,6 +371,17 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         BorrarButtonReservarTurno.setBackground(new java.awt.Color(204, 204, 204));
+        BorrarButtonReservarTurno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BorrarButtonReservarTurnoMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BorrarButtonReservarTurnoMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BorrarButtonReservarTurnoMouseEntered(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(51, 51, 51));
@@ -411,15 +424,50 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        ReservarButtonReservarTurno.setBackground(new java.awt.Color(0, 204, 153));
+        ReservarButtonReservarTurno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ReservarButtonReservarTurnoMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ReservarButtonReservarTurnoMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ReservarButtonReservarTurnoMouseEntered(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Confirmar");
+
+        javax.swing.GroupLayout ReservarButtonReservarTurnoLayout = new javax.swing.GroupLayout(ReservarButtonReservarTurno);
+        ReservarButtonReservarTurno.setLayout(ReservarButtonReservarTurnoLayout);
+        ReservarButtonReservarTurnoLayout.setHorizontalGroup(
+            ReservarButtonReservarTurnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReservarButtonReservarTurnoLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel22)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        ReservarButtonReservarTurnoLayout.setVerticalGroup(
+            ReservarButtonReservarTurnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReservarButtonReservarTurnoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel22)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout ReservarTurnoPanelLayout = new javax.swing.GroupLayout(ReservarTurnoPanel);
         ReservarTurnoPanel.setLayout(ReservarTurnoPanelLayout);
         ReservarTurnoPanelLayout.setHorizontalGroup(
             ReservarTurnoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ReservarTurnoPanelLayout.createSequentialGroup()
-                .addComponent(BorrarButtonReservarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReservarTurnoPanelLayout.createSequentialGroup()
                 .addGroup(ReservarTurnoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ReservarTurnoPanelLayout.createSequentialGroup()
+                        .addComponent(BorrarButtonReservarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ReservarButtonReservarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(TurnoSeleccionadoReservarTurno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(TurnosDisponiblesReservarTurno)
                     .addGroup(ReservarTurnoPanelLayout.createSequentialGroup()
@@ -475,9 +523,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(TurnosDisponiblesReservarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(TurnoSeleccionadoReservarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(BorrarButtonReservarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addGroup(ReservarTurnoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BorrarButtonReservarTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ReservarButtonReservarTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         ContentLayeredPane.add(ReservarTurnoPanel, "card2");
@@ -1350,6 +1400,81 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ConsultorioComboBoxReservarTurnoActionPerformed
 
+    private void BorrarButtonReservarTurnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarButtonReservarTurnoMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_BorrarButtonReservarTurnoMouseEntered
+
+    private void BorrarButtonReservarTurnoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarButtonReservarTurnoMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_BorrarButtonReservarTurnoMouseExited
+
+    private void BorrarButtonReservarTurnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarButtonReservarTurnoMousePressed
+        TurnoSeleccionadoReservarTurno.removeAll();
+        TurnoSeleccionadoReservarTurno.revalidate();
+    }//GEN-LAST:event_BorrarButtonReservarTurnoMousePressed
+
+    private void ReservarButtonReservarTurnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReservarButtonReservarTurnoMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_ReservarButtonReservarTurnoMouseEntered
+
+    private void ReservarButtonReservarTurnoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReservarButtonReservarTurnoMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_ReservarButtonReservarTurnoMouseExited
+
+    private void ReservarButtonReservarTurnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReservarButtonReservarTurnoMousePressed
+        if (TurnoSeleccionadoReservarTurno.getComponentCount() > 0){
+            JPanel jPanel = (JPanel)TurnoSeleccionadoReservarTurno.getComponent(0);
+            if (jPanel instanceof ConsultaInfoPanel){
+                try{
+                    serviceConsulta.create(((ConsultaInfoPanel) jPanel).getConsulta());
+//                    TurnoSeleccionadoReservarTurno.removeAll();
+//                    TurnoSeleccionadoReservarTurno.revalidate();
+//                    populateConsultorioComboBox();
+//                    populateConsultasDisponibles();
+                    JPanel panelConfirmacion = new JPanel();
+                    panelConfirmacion.setBackground(new Color(0, 204, 153));
+                    panelConfirmacion.setLayout(new BorderLayout());
+                    panelConfirmacion.setPreferredSize(new Dimension(866, 72));
+                    JLabel reservado = new JLabel("Turno reservado");
+                    reservado.setPreferredSize(new Dimension(Integer.MAX_VALUE, 18));
+                    reservado.setHorizontalAlignment(JLabel.CENTER);
+                    reservado.setForeground(Color.white);
+                    reservado.setFont(new Font("Roboto Medium", 0, 18));
+                    panelConfirmacion.add(reservado, BorderLayout.CENTER);
+                    
+//                    final Timer timer;
+//                    timer = new Timer(2000, e -> {
+//                        TurnoSeleccionadoReservarTurno.removeAll();
+//                        TurnoSeleccionadoReservarTurno.revalidate();
+//                        timer.stop();
+//                    });
+//                    TurnoSeleccionadoReservarTurno.add(panelConfirmacion);
+//                    TurnoSeleccionadoReservarTurno.revalidate();
+//                    timer.start();
+                    final Timer[] timer = new Timer[1];
+                    timer[0] = new Timer(2000, e -> {
+                        TurnoSeleccionadoReservarTurno.removeAll();
+                        TurnoSeleccionadoReservarTurno.revalidate();
+                        timer[0].stop();
+                    });
+                    
+                    TurnoSeleccionadoReservarTurno.removeAll();
+                    TurnoSeleccionadoReservarTurno.revalidate();
+                    populateConsultorioComboBox();
+                    populateConsultasDisponibles();
+
+                    TurnoSeleccionadoReservarTurno.add(panelConfirmacion);
+                    TurnoSeleccionadoReservarTurno.revalidate();
+                    timer[0].start();
+                    
+                }catch(ServiceException exception){
+                    JOptionPane.showMessageDialog(null, "No se pudo reservar la consulta", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        }
+    }//GEN-LAST:event_ReservarButtonReservarTurnoMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -1423,6 +1548,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField RegisterPacientePassword;
     private javax.swing.JPasswordField RegisterPacientePasswordRepeat;
     private javax.swing.ButtonGroup RegisterPacienteSexo;
+    private javax.swing.JPanel ReservarButtonReservarTurno;
     private javax.swing.JLabel ReservarTurnoMenu;
     private javax.swing.JPanel ReservarTurnoPanel;
     private javax.swing.JPanel RightLoginPanel;
@@ -1450,6 +1576,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1656,6 +1783,8 @@ public class MainFrame extends javax.swing.JFrame {
             
             for (Consulta consulta : consultasNew){
                 ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta);
+                panel.setPanelEventListener(this);
+                panel.addMouseListener();
                 TurnosDisponiblesContenedorReservarTurno.add(Box.createVerticalStrut(2));
                 TurnosDisponiblesContenedorReservarTurno.add(panel);
             }
@@ -1676,6 +1805,8 @@ public class MainFrame extends javax.swing.JFrame {
                     if (param[0].equals(consulta.getConsultorio())){
                         System.out.println("FLAG 80");
                         ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta);
+                        panel.setPanelEventListener(this);
+                        panel.addMouseListener();
                         TurnosDisponiblesContenedorReservarTurno.add(Box.createVerticalStrut(2));
                         TurnosDisponiblesContenedorReservarTurno.add(panel);
                     }
@@ -1683,6 +1814,8 @@ public class MainFrame extends javax.swing.JFrame {
             }else{
                 for (Consulta consulta : consultasNew){
                     ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta);
+                    panel.setPanelEventListener(this);
+                    panel.addMouseListener();
                     TurnosDisponiblesContenedorReservarTurno.add(Box.createVerticalStrut(2));
                     TurnosDisponiblesContenedorReservarTurno.add(panel);
                 }
@@ -1703,6 +1836,31 @@ public class MainFrame extends javax.swing.JFrame {
 //            }
 //        }
 //    }
+    
+    
+    
+    @Override
+    public void onConsultaEvent(Consulta consulta){
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        System.out.println(consulta.toString());
+        ConsultaInfoPanel panelConsultaSelected = new ConsultaInfoPanel(consulta);
+        TurnoSeleccionadoReservarTurno.removeAll();
+        TurnoSeleccionadoReservarTurno.add(panelConsultaSelected, BorderLayout.CENTER);
+        TurnoSeleccionadoReservarTurno.revalidate();
+        System.out.println("com.company.gui.MainFrame.onConsultaEvent()");
+    }
+    
+    @Override
+    public void mouseEntered(){
+        System.out.println("com.company.gui.MainFrame.mouseEntered()");
+        setCursor(Cursor.HAND_CURSOR);
+    }
+    
+    @Override
+    public void mouseExited(){
+        System.out.println("com.company.gui.MainFrame.mouseExited()");
+        setCursor(Cursor.DEFAULT_CURSOR);
+    }
     
     
 }

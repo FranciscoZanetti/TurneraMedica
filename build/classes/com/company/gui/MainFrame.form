@@ -331,12 +331,13 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="BorrarButtonReservarTurno" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="BorrarButtonReservarTurno" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="ReservarButtonReservarTurno" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <Component id="TurnoSeleccionadoReservarTurno" alignment="0" max="32767" attributes="0"/>
                                       <Component id="TurnosDisponiblesReservarTurno" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
@@ -409,9 +410,12 @@
                                   <Component id="TurnosDisponiblesReservarTurno" min="-2" pref="300" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="TurnoSeleccionadoReservarTurno" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="BorrarButtonReservarTurno" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                                  <EmptySpace pref="113" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="BorrarButtonReservarTurno" max="32767" attributes="0"/>
+                                      <Component id="ReservarButtonReservarTurno" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -538,19 +542,13 @@
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="TurnoSeleccionadoReservarTurno">
+                          <Properties>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[866, 72]"/>
+                            </Property>
+                          </Properties>
 
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="69" max="32767" attributes="0"/>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
                         </Container>
                         <Component class="javax.swing.JComboBox" name="ConsultorioComboBoxReservarTurno">
                           <Properties>
@@ -580,6 +578,11 @@
                               <Color blue="cc" green="cc" red="cc" type="rgb"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BorrarButtonReservarTurnoMousePressed"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BorrarButtonReservarTurnoMouseExited"/>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BorrarButtonReservarTurnoMouseEntered"/>
+                          </Events>
 
                           <Layout>
                             <DimensionLayout dim="0">
@@ -642,6 +645,52 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator10">
                         </Component>
+                        <Container class="javax.swing.JPanel" name="ReservarButtonReservarTurno">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="99" green="cc" red="0" type="rgb"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ReservarButtonReservarTurnoMousePressed"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ReservarButtonReservarTurnoMouseExited"/>
+                            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ReservarButtonReservarTurnoMouseEntered"/>
+                          </Events>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="jLabel22">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Roboto Medium" size="16" style="0"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Confirmar"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
                       </SubComponents>
                     </Container>
                   </SubComponents>
