@@ -27,12 +27,19 @@ public class ConsultaInfoPanel extends JPanel {
     
     private PanelEventListener listener;
     
-    public ConsultaInfoPanel(Consulta consulta){
+    public ConsultaInfoPanel(Consulta consulta, String user){
         
         this.consulta = consulta;
         
-        String nombreCompleto = consulta.getMedico().getNombre() + " " + consulta.getMedico().getApellido();
-        ConsultaFieldPanel nombreApellido = new ConsultaFieldPanel("Médico", nombreCompleto);
+        ConsultaFieldPanel nombreApellido;
+        if (user.equals("paciente")){
+            String nombreCompleto = consulta.getMedico().getNombre() + " " + consulta.getMedico().getApellido();
+            nombreApellido = new ConsultaFieldPanel("Médico", nombreCompleto);
+        }
+        else{
+            String nombreCompleto = consulta.getPaciente().getNombre() + " " + consulta.getPaciente().getApellido();
+            nombreApellido = new ConsultaFieldPanel("Paciente", nombreCompleto);
+        }
         ConsultaFieldPanel consultorio = new ConsultaFieldPanel("Consultorio", consulta.getConsultorio());
         
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM. yyyy", new Locale("es", "ES"));
@@ -41,7 +48,7 @@ public class ConsultaInfoPanel extends JPanel {
         
         ConsultaFieldPanel hora = new ConsultaFieldPanel("Hora", consulta.getHora().toString());
         ConsultaFieldPanel obraSocial = new ConsultaFieldPanel("Obra Social", consulta.getMedico().getObrasocial());
-        ConsultaFieldPanel precio = new ConsultaFieldPanel("Precio", String.valueOf(consulta.getPrecio()));
+        ConsultaFieldPanel precio = new ConsultaFieldPanel("Precio", String.valueOf((Integer) consulta.getPrecio()));
         
         setBackground(Color.WHITE);
         setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -74,7 +81,7 @@ public class ConsultaInfoPanel extends JPanel {
         this.listener = listener;
     }
     
-    public void addMouseListener(){
+    public void addMouseListener(String type){
         System.out.println("com.company.gui.ConsultaGui.ConsultaInfoPanel.addMouseClicked()");
         addMouseListener(new MouseAdapter(){
             
@@ -87,7 +94,12 @@ public class ConsultaInfoPanel extends JPanel {
                     System.out.println(".mouseClicked2()");
                     if (listener != null){
                         System.out.println(".mouseClickedListener()");
-                        listener.onConsultaEvent(consulta1);
+                        if (type == "reservar"){
+                            listener.onReservarTurnoEvent(consulta1);
+                        }
+                        if (type == "proximos"){
+                            listener.onProximosTurnosEvent(consulta1);
+                        }
                     }
                 }
             }

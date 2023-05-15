@@ -11,7 +11,8 @@ import com.company.entidades.Consulta;
  * @author User
  */
 public interface PanelEventListener {
-    void onConsultaEvent(Consulta consulta);
+    void onReservarTurnoEvent(Consulta consulta);
+    void onProximosTurnosEvent(Consulta consulta);
     void mouseEntered();
     void mouseExited();
 }

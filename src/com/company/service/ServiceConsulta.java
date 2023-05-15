@@ -18,9 +18,14 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Locale;
+import java.time.temporal.TemporalAdjusters;
 
 /**
  *
@@ -31,6 +36,28 @@ public class ServiceConsulta {
     
     public ServiceConsulta(){
         daoConsulta = new DAOConsulta();
+    }
+    
+    public void ordenarConsultas(ArrayList<Consulta> consultas){
+        Collections.sort(consultas, new Comparator<Consulta>(){
+            @Override
+            public int compare(Consulta consulta1, Consulta consulta2){
+                int dateComparison = consulta1.getFecha().compareTo(consulta2.getFecha());
+                if (dateComparison == 0){
+                    return consulta1.getHora().compareTo(consulta2.getHora());
+                }
+                return dateComparison;
+            }
+        });
+    }
+    
+    public void ordenarFechas(ArrayList<LocalDate> fechas){
+        Collections.sort(fechas, new Comparator<LocalDate>(){
+            @Override
+            public int compare(LocalDate fecha1, LocalDate fecha2){
+                return fecha1.compareTo(fecha2);
+            }
+        });
     }
     
     public void create(Consulta consulta) throws ServiceException{
@@ -57,10 +84,11 @@ public class ServiceConsulta {
         }
     }
     
-    public ArrayList<Consulta> searchAll(int activo) throws ServiceException{
-        ArrayList<Consulta> consultas;
+    public ArrayList<Consulta> searchAll(int activo, int status) throws ServiceException{
+        ArrayList<Consulta> consultas = new ArrayList<>();
         try {
-            consultas = daoConsulta.searchAll(activo);
+            consultas = daoConsulta.searchAll(activo, status);
+            ordenarConsultas(consultas);
             return consultas;
         }catch (DAOException exception){
             throw new ServiceException("No se pudieron encontrar resultados");
@@ -68,9 +96,10 @@ public class ServiceConsulta {
     }
     
     public ArrayList<Consulta> serchAllBetween(int activo, LocalDate start, LocalDate end) throws ServiceException{
-        ArrayList<Consulta> consultas;
+        ArrayList<Consulta> consultas = new ArrayList<>();
         try {
             consultas = daoConsulta.searchAllBetween(activo, start, end);
+            ordenarConsultas(consultas);
             return consultas;
         }catch (DAOException exception){
             throw new ServiceException("No se pudieron encontrar resultados");
@@ -78,9 +107,10 @@ public class ServiceConsulta {
     }
     
     public ArrayList<Consulta> serchAllBetweenByMedico(int dni, LocalDate start, LocalDate end) throws ServiceException{
-        ArrayList<Consulta> consultas;
+        ArrayList<Consulta> consultas = new ArrayList<>();
         try {
             consultas = daoConsulta.searchAllBetweenByMedico(dni, start, end);
+            ordenarConsultas(consultas);
             return consultas;
         }catch (DAOException exception){
             throw new ServiceException("No se pudieron encontrar resultados");
@@ -88,9 +118,10 @@ public class ServiceConsulta {
     }
     
     public ArrayList<Consulta> serchAllByMedico(int dni, int status) throws ServiceException{
-        ArrayList<Consulta> consultas;
+        ArrayList<Consulta> consultas = new ArrayList<>();
         try {
             consultas = daoConsulta.searchAllByMedico(dni, status);
+            ordenarConsultas(consultas);
             return consultas;
         }catch (DAOException exception){
             throw new ServiceException("No se pudieron encontrar resultados");
@@ -98,9 +129,10 @@ public class ServiceConsulta {
     }
     
     public ArrayList<Consulta> serchAllByPaciente(int dni, int status) throws ServiceException{
-        ArrayList<Consulta> consultas;
+        ArrayList<Consulta> consultas = new ArrayList<>();
         try {
             consultas = daoConsulta.searchAllByPaciente(dni, status);
+            ordenarConsultas(consultas);
             return consultas;
         }catch (DAOException exception){
             throw new ServiceException("No se pudieron encontrar resultados");
@@ -111,7 +143,7 @@ public class ServiceConsulta {
     public int incomeGeneratedByMedico(ArrayList<Consulta> consultas){
         int acum = 0;
         for(Consulta consulta : consultas){
-            acum = acum + consulta.getMedico().getHonorarios();
+            acum = acum + consulta.getPrecio();
         }
         return acum;
     }
@@ -130,12 +162,18 @@ public class ServiceConsulta {
         return consultorios;
     }
     
-    public void cobrarConsultas(ArrayList<Consulta> consultas) throws ServiceException{
-        ServiceConsulta serviceConsulta = new ServiceConsulta();
+    public void cobrarConsultas() throws ServiceException{
+        ArrayList<Consulta> consultas = searchAll(1, 1);
         LocalDate today = LocalDate.now();
+        LocalTime now = LocalTime.now();
         for (Consulta consulta : consultas){
             if (consulta.getFecha().isBefore(today)){
-                serviceConsulta.deactivate(consulta);
+                deactivate(consulta);
+            }
+            if (consulta.getFecha().isEqual(today)){
+                if (consulta.getHora().isBefore(now)){
+                    deactivate(consulta);
+                }
             }
         }
     }
@@ -203,5 +241,26 @@ public class ServiceConsulta {
 
         
         return consultasNew;
+    }
+    
+    public ArrayList<String> generateArrayFechas(ArrayList<Consulta> consultas){
+        ArrayList<LocalDate> fechas = new ArrayList<>();
+        LocalDate nowPlusMonth = Date.valueOf(LocalDate.now().plusMonths(1)).toLocalDate();
+        for (Consulta consulta: consultas){
+            LocalDate date = consulta.getFecha();
+            if (date.isBefore(nowPlusMonth) || date.isEqual(nowPlusMonth)){
+                fechas.add(date);
+            }
+        }
+        HashSet<LocalDate> fechasHash = new HashSet<>(fechas);
+        fechas = new ArrayList<>(fechasHash);
+        ordenarFechas(fechas);
+        
+        ArrayList<String> fechasString = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM. yyyy", new Locale("es", "ES"));
+        for (LocalDate fecha: fechas){
+            fechasString.add(fecha.format(formatter));
+        }
+        return fechasString;
     }
 }

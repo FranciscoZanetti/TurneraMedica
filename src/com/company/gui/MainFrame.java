@@ -32,6 +32,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
@@ -80,12 +81,27 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         RegisterPacienteSexo = new javax.swing.ButtonGroup();
         MainPanel = new javax.swing.JPanel();
         MainLayeredPane = new javax.swing.JLayeredPane();
+        InitPanel = new javax.swing.JPanel();
+        InitLayeredPane = new javax.swing.JLayeredPane();
+        InitContenedorPanel = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        AdminPanel = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        PacientePanel = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
         DashboardPanel = new javax.swing.JPanel();
         LeftMenu = new javax.swing.JPanel();
         TopLeftMenu = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         Username = new javax.swing.JLabel();
         CenterLeftMenuLayeredPane = new javax.swing.JLayeredPane();
+        CenterLeftMenuAdmin = new javax.swing.JPanel();
+        AdministrarMedicosMenu = new javax.swing.JLabel();
+        AdministrarPacientesMenu = new javax.swing.JLabel();
+        ReportesMenu = new javax.swing.JLabel();
+        CenterLeftMenuMedico = new javax.swing.JPanel();
+        ProximosTurnosMenuMedico = new javax.swing.JLabel();
         CenterLeftMenu = new javax.swing.JPanel();
         ReservarTurnoMenu = new javax.swing.JLabel();
         ProximosTurnosMenu = new javax.swing.JLabel();
@@ -93,6 +109,36 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         Salir = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         ContentLayeredPane = new javax.swing.JLayeredPane();
+        AdministrarMedicosPanel = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        AdministrarMedicosScrollPane = new javax.swing.JScrollPane();
+        AdministrarMedicosContenedor = new javax.swing.JPanel();
+        AdministrarMedicosSearchTextfield = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        jSeparator12 = new javax.swing.JSeparator();
+        AdministrarMedicosSearchButton = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        ProximosTurnosMedicoPanel = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        ProximosTurnosMedicoScrollPane = new javax.swing.JScrollPane();
+        ProximosTurnosMedicoContenedor = new javax.swing.JPanel();
+        ProximosTurnosMedicoFechaComboBox = new javax.swing.JComboBox<>();
+        jLabel31 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        HistorialTurnosPanel = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        HistorialTurnosScrollPane = new javax.swing.JScrollPane();
+        HistorialTurnosContenedor = new javax.swing.JPanel();
+        ProximosTurnosPanel = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        ProximosTurnosScrollPane = new javax.swing.JScrollPane();
+        ProximosTurnosContenedor = new javax.swing.JPanel();
+        ProximoTurnoAEliminar = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        ProximosTurnosMantenerButton = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        ProximosTurnosCancelarButton = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
         ReservarTurnoPanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -174,6 +220,144 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
 
         MainLayeredPane.setLayout(new java.awt.CardLayout());
 
+        InitLayeredPane.setLayout(new java.awt.CardLayout());
+
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Sin título-2.png"))); // NOI18N
+
+        AdminPanel.setBackground(new java.awt.Color(255, 255, 255));
+        AdminPanel.setPreferredSize(new java.awt.Dimension(300, 400));
+        AdminPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdminPanelMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdminPanelMouseEntered(evt);
+            }
+        });
+
+        jLabel30.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel30.setText("Administrador");
+
+        javax.swing.GroupLayout AdminPanelLayout = new javax.swing.GroupLayout(AdminPanel);
+        AdminPanel.setLayout(AdminPanelLayout);
+        AdminPanelLayout.setHorizontalGroup(
+            AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdminPanelLayout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(jLabel30)
+                .addGap(35, 35, 35))
+        );
+        AdminPanelLayout.setVerticalGroup(
+            AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdminPanelLayout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jLabel30)
+                .addContainerGap(178, Short.MAX_VALUE))
+        );
+
+        PacientePanel.setBackground(new java.awt.Color(255, 255, 255));
+        PacientePanel.setPreferredSize(new java.awt.Dimension(300, 400));
+        PacientePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PacientePanelMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PacientePanelMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PacientePanelMouseEntered(evt);
+            }
+        });
+
+        jLabel32.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel32.setText("Médico");
+
+        jLabel33.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel33.setText("Paciente");
+
+        javax.swing.GroupLayout PacientePanelLayout = new javax.swing.GroupLayout(PacientePanel);
+        PacientePanel.setLayout(PacientePanelLayout);
+        PacientePanelLayout.setHorizontalGroup(
+            PacientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PacientePanelLayout.createSequentialGroup()
+                .addGroup(PacientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PacientePanelLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel32))
+                    .addGroup(PacientePanelLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel33)))
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+        PacientePanelLayout.setVerticalGroup(
+            PacientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PacientePanelLayout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel33)
+                .addContainerGap(151, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout InitContenedorPanelLayout = new javax.swing.GroupLayout(InitContenedorPanel);
+        InitContenedorPanel.setLayout(InitContenedorPanelLayout);
+        InitContenedorPanelLayout.setHorizontalGroup(
+            InitContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InitContenedorPanelLayout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(AdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92)
+                .addComponent(PacientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(298, Short.MAX_VALUE))
+            .addGroup(InitContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(InitContenedorPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel29)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        InitContenedorPanelLayout.setVerticalGroup(
+            InitContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InitContenedorPanelLayout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addGroup(InitContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PacientePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(167, Short.MAX_VALUE))
+            .addGroup(InitContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(InitContenedorPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel29)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        InitLayeredPane.add(InitContenedorPanel, "card2");
+
+        javax.swing.GroupLayout InitPanelLayout = new javax.swing.GroupLayout(InitPanel);
+        InitPanel.setLayout(InitPanelLayout);
+        InitPanelLayout.setHorizontalGroup(
+            InitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGroup(InitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(InitPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(InitLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        InitPanelLayout.setVerticalGroup(
+            InitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(InitPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(InitPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(InitLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        MainLayeredPane.add(InitPanel, "card5");
+
         DashboardPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         LeftMenu.setBackground(new java.awt.Color(0, 204, 153));
@@ -197,6 +381,79 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
 
         CenterLeftMenuLayeredPane.setLayout(new java.awt.CardLayout());
 
+        CenterLeftMenuAdmin.setBackground(new java.awt.Color(0, 204, 153));
+
+        AdministrarMedicosMenu.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        AdministrarMedicosMenu.setForeground(new java.awt.Color(255, 255, 255));
+        AdministrarMedicosMenu.setText("Administrar médicos");
+
+        AdministrarPacientesMenu.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        AdministrarPacientesMenu.setForeground(new java.awt.Color(255, 255, 255));
+        AdministrarPacientesMenu.setText("Administrar pacientes");
+
+        ReportesMenu.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        ReportesMenu.setForeground(new java.awt.Color(255, 255, 255));
+        ReportesMenu.setText("Reportes");
+
+        javax.swing.GroupLayout CenterLeftMenuAdminLayout = new javax.swing.GroupLayout(CenterLeftMenuAdmin);
+        CenterLeftMenuAdmin.setLayout(CenterLeftMenuAdminLayout);
+        CenterLeftMenuAdminLayout.setHorizontalGroup(
+            CenterLeftMenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CenterLeftMenuAdminLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(CenterLeftMenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ReportesMenu)
+                    .addComponent(AdministrarMedicosMenu)
+                    .addComponent(AdministrarPacientesMenu))
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+        CenterLeftMenuAdminLayout.setVerticalGroup(
+            CenterLeftMenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CenterLeftMenuAdminLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(AdministrarPacientesMenu)
+                .addGap(18, 18, 18)
+                .addComponent(AdministrarMedicosMenu)
+                .addGap(18, 18, 18)
+                .addComponent(ReportesMenu)
+                .addContainerGap(284, Short.MAX_VALUE))
+        );
+
+        CenterLeftMenuLayeredPane.add(CenterLeftMenuAdmin, "card4");
+
+        CenterLeftMenuMedico.setBackground(new java.awt.Color(0, 204, 153));
+
+        ProximosTurnosMenuMedico.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        ProximosTurnosMenuMedico.setForeground(new java.awt.Color(255, 255, 255));
+        ProximosTurnosMenuMedico.setText("Próximos turnos");
+        ProximosTurnosMenuMedico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMenuMedicoMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMenuMedicoMouseEntered(evt);
+            }
+        });
+
+        javax.swing.GroupLayout CenterLeftMenuMedicoLayout = new javax.swing.GroupLayout(CenterLeftMenuMedico);
+        CenterLeftMenuMedico.setLayout(CenterLeftMenuMedicoLayout);
+        CenterLeftMenuMedicoLayout.setHorizontalGroup(
+            CenterLeftMenuMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CenterLeftMenuMedicoLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(ProximosTurnosMenuMedico)
+                .addContainerGap(127, Short.MAX_VALUE))
+        );
+        CenterLeftMenuMedicoLayout.setVerticalGroup(
+            CenterLeftMenuMedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CenterLeftMenuMedicoLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(ProximosTurnosMenuMedico)
+                .addContainerGap(371, Short.MAX_VALUE))
+        );
+
+        CenterLeftMenuLayeredPane.add(CenterLeftMenuMedico, "card3");
+
         CenterLeftMenu.setBackground(new java.awt.Color(0, 204, 153));
         CenterLeftMenu.setMinimumSize(new java.awt.Dimension(310, 410));
         CenterLeftMenu.setPreferredSize(new java.awt.Dimension(310, 410));
@@ -219,10 +476,32 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         ProximosTurnosMenu.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         ProximosTurnosMenu.setForeground(new java.awt.Color(255, 255, 255));
         ProximosTurnosMenu.setText("Próximos turnos");
+        ProximosTurnosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMenuMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMenuMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMenuMouseEntered(evt);
+            }
+        });
 
         HistorialTurnosMenu.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         HistorialTurnosMenu.setForeground(new java.awt.Color(255, 255, 255));
         HistorialTurnosMenu.setText("Historial de turnos");
+        HistorialTurnosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HistorialTurnosMenuMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HistorialTurnosMenuMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HistorialTurnosMenuMouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout CenterLeftMenuLayout = new javax.swing.GroupLayout(CenterLeftMenu);
         CenterLeftMenu.setLayout(CenterLeftMenuLayout);
@@ -245,7 +524,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                 .addComponent(ProximosTurnosMenu)
                 .addGap(18, 18, 18)
                 .addComponent(HistorialTurnosMenu)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
 
         CenterLeftMenuLayeredPane.add(CenterLeftMenu, "card2");
@@ -290,6 +569,333 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         );
 
         ContentLayeredPane.setLayout(new java.awt.CardLayout());
+
+        AdministrarMedicosPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel34.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel34.setText("Médicos");
+
+        AdministrarMedicosContenedor.setLayout(new javax.swing.BoxLayout(AdministrarMedicosContenedor, javax.swing.BoxLayout.Y_AXIS));
+        AdministrarMedicosScrollPane.setViewportView(AdministrarMedicosContenedor);
+
+        AdministrarMedicosSearchTextfield.setBackground(new java.awt.Color(255, 255, 255));
+        AdministrarMedicosSearchTextfield.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
+        AdministrarMedicosSearchTextfield.setForeground(new java.awt.Color(51, 51, 51));
+        AdministrarMedicosSearchTextfield.setBorder(null);
+        AdministrarMedicosSearchTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdministrarMedicosSearchTextfieldActionPerformed(evt);
+            }
+        });
+
+        jLabel35.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel35.setText("Apellido");
+
+        AdministrarMedicosSearchButton.setBackground(new java.awt.Color(204, 204, 204));
+        AdministrarMedicosSearchButton.setPreferredSize(new java.awt.Dimension(82, 34));
+
+        jLabel36.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel36.setText("Buscar");
+
+        javax.swing.GroupLayout AdministrarMedicosSearchButtonLayout = new javax.swing.GroupLayout(AdministrarMedicosSearchButton);
+        AdministrarMedicosSearchButton.setLayout(AdministrarMedicosSearchButtonLayout);
+        AdministrarMedicosSearchButtonLayout.setHorizontalGroup(
+            AdministrarMedicosSearchButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdministrarMedicosSearchButtonLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jLabel36)
+                .addGap(18, 18, 18))
+        );
+        AdministrarMedicosSearchButtonLayout.setVerticalGroup(
+            AdministrarMedicosSearchButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdministrarMedicosSearchButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout AdministrarMedicosPanelLayout = new javax.swing.GroupLayout(AdministrarMedicosPanel);
+        AdministrarMedicosPanel.setLayout(AdministrarMedicosPanelLayout);
+        AdministrarMedicosPanelLayout.setHorizontalGroup(
+            AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addGap(22, 22, 22)
+                        .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator12)
+                            .addComponent(AdministrarMedicosSearchTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addComponent(AdministrarMedicosSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel34)
+                    .addComponent(AdministrarMedicosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        AdministrarMedicosPanelLayout.setVerticalGroup(
+            AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel34)
+                .addGap(41, 41, 41)
+                .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
+                        .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AdministrarMedicosSearchTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel35))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AdministrarMedicosSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(AdministrarMedicosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+
+        ContentLayeredPane.add(AdministrarMedicosPanel, "card6");
+
+        ProximosTurnosMedicoPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel28.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel28.setText("Próximos turnos");
+
+        ProximosTurnosMedicoScrollPane.setMaximumSize(new java.awt.Dimension(890, 450));
+        ProximosTurnosMedicoScrollPane.setMinimumSize(new java.awt.Dimension(890, 450));
+        ProximosTurnosMedicoScrollPane.setPreferredSize(new java.awt.Dimension(890, 450));
+
+        ProximosTurnosMedicoContenedor.setLayout(new javax.swing.BoxLayout(ProximosTurnosMedicoContenedor, javax.swing.BoxLayout.Y_AXIS));
+        ProximosTurnosMedicoScrollPane.setViewportView(ProximosTurnosMedicoContenedor);
+
+        ProximosTurnosMedicoFechaComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        ProximosTurnosMedicoFechaComboBox.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        ProximosTurnosMedicoFechaComboBox.setForeground(new java.awt.Color(51, 51, 51));
+        ProximosTurnosMedicoFechaComboBox.setMaximumRowCount(32);
+        ProximosTurnosMedicoFechaComboBox.setBorder(null);
+        ProximosTurnosMedicoFechaComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMedicoFechaComboBoxMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMedicoFechaComboBoxMouseEntered(evt);
+            }
+        });
+        ProximosTurnosMedicoFechaComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProximosTurnosMedicoFechaComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel31.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel31.setText("Fecha");
+
+        javax.swing.GroupLayout ProximosTurnosMedicoPanelLayout = new javax.swing.GroupLayout(ProximosTurnosMedicoPanel);
+        ProximosTurnosMedicoPanel.setLayout(ProximosTurnosMedicoPanelLayout);
+        ProximosTurnosMedicoPanelLayout.setHorizontalGroup(
+            ProximosTurnosMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProximosTurnosMedicoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ProximosTurnosMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28)
+                    .addComponent(ProximosTurnosMedicoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31)
+                    .addGroup(ProximosTurnosMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ProximosTurnosMedicoFechaComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 250, Short.MAX_VALUE)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        ProximosTurnosMedicoPanelLayout.setVerticalGroup(
+            ProximosTurnosMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProximosTurnosMedicoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jLabel31)
+                .addGap(18, 18, 18)
+                .addComponent(ProximosTurnosMedicoFechaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ProximosTurnosMedicoScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
+        );
+
+        ContentLayeredPane.add(ProximosTurnosMedicoPanel, "card5");
+
+        HistorialTurnosPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel27.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel27.setText("Historial de turnos");
+
+        HistorialTurnosScrollPane.setMaximumSize(new java.awt.Dimension(890, 380));
+        HistorialTurnosScrollPane.setMinimumSize(new java.awt.Dimension(890, 380));
+        HistorialTurnosScrollPane.setPreferredSize(new java.awt.Dimension(890, 380));
+
+        HistorialTurnosContenedor.setPreferredSize(new java.awt.Dimension(866, 380));
+        HistorialTurnosContenedor.setLayout(new javax.swing.BoxLayout(HistorialTurnosContenedor, javax.swing.BoxLayout.Y_AXIS));
+        HistorialTurnosScrollPane.setViewportView(HistorialTurnosContenedor);
+
+        javax.swing.GroupLayout HistorialTurnosPanelLayout = new javax.swing.GroupLayout(HistorialTurnosPanel);
+        HistorialTurnosPanel.setLayout(HistorialTurnosPanelLayout);
+        HistorialTurnosPanelLayout.setHorizontalGroup(
+            HistorialTurnosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HistorialTurnosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(HistorialTurnosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27)
+                    .addComponent(HistorialTurnosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        HistorialTurnosPanelLayout.setVerticalGroup(
+            HistorialTurnosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HistorialTurnosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel27)
+                .addGap(64, 64, 64)
+                .addComponent(HistorialTurnosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+
+        ContentLayeredPane.add(HistorialTurnosPanel, "card4");
+
+        ProximosTurnosPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel23.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel23.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel23.setText("Próximos turnos");
+
+        ProximosTurnosScrollPane.setMaximumSize(new java.awt.Dimension(890, 380));
+        ProximosTurnosScrollPane.setMinimumSize(new java.awt.Dimension(890, 380));
+        ProximosTurnosScrollPane.setPreferredSize(new java.awt.Dimension(890, 380));
+
+        ProximosTurnosContenedor.setPreferredSize(new java.awt.Dimension(868, 380));
+        ProximosTurnosContenedor.setLayout(new javax.swing.BoxLayout(ProximosTurnosContenedor, javax.swing.BoxLayout.Y_AXIS));
+        ProximosTurnosScrollPane.setViewportView(ProximosTurnosContenedor);
+
+        ProximoTurnoAEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        ProximoTurnoAEliminar.setMinimumSize(new java.awt.Dimension(890, 72));
+        ProximoTurnoAEliminar.setPreferredSize(new java.awt.Dimension(890, 72));
+        ProximoTurnoAEliminar.setLayout(new java.awt.BorderLayout());
+
+        jLabel24.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel24.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel24.setText("¿Desea cancelar el turno?");
+        jLabel24.setVisible(false);
+
+        ProximosTurnosMantenerButton.setBackground(new java.awt.Color(187, 187, 187));
+        ProximosTurnosMantenerButton.setVisible(false);
+        ProximosTurnosMantenerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMantenerButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMantenerButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ProximosTurnosMantenerButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel25.setText("Mantener");
+
+        javax.swing.GroupLayout ProximosTurnosMantenerButtonLayout = new javax.swing.GroupLayout(ProximosTurnosMantenerButton);
+        ProximosTurnosMantenerButton.setLayout(ProximosTurnosMantenerButtonLayout);
+        ProximosTurnosMantenerButtonLayout.setHorizontalGroup(
+            ProximosTurnosMantenerButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProximosTurnosMantenerButtonLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel25)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        ProximosTurnosMantenerButtonLayout.setVerticalGroup(
+            ProximosTurnosMantenerButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProximosTurnosMantenerButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel25)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        ProximosTurnosCancelarButton.setBackground(new java.awt.Color(255, 51, 51));
+        ProximosTurnosCancelarButton.setPreferredSize(new java.awt.Dimension(103, 31));
+        ProximosTurnosCancelarButton.setVisible(false);
+        ProximosTurnosCancelarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ProximosTurnosCancelarButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ProximosTurnosCancelarButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ProximosTurnosCancelarButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel26.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Cancelar");
+
+        javax.swing.GroupLayout ProximosTurnosCancelarButtonLayout = new javax.swing.GroupLayout(ProximosTurnosCancelarButton);
+        ProximosTurnosCancelarButton.setLayout(ProximosTurnosCancelarButtonLayout);
+        ProximosTurnosCancelarButtonLayout.setHorizontalGroup(
+            ProximosTurnosCancelarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProximosTurnosCancelarButtonLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel26)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        ProximosTurnosCancelarButtonLayout.setVerticalGroup(
+            ProximosTurnosCancelarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProximosTurnosCancelarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel26)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout ProximosTurnosPanelLayout = new javax.swing.GroupLayout(ProximosTurnosPanel);
+        ProximosTurnosPanel.setLayout(ProximosTurnosPanelLayout);
+        ProximosTurnosPanelLayout.setHorizontalGroup(
+            ProximosTurnosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProximosTurnosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ProximosTurnosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(ProximosTurnosPanelLayout.createSequentialGroup()
+                        .addComponent(ProximosTurnosMantenerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ProximosTurnosCancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24)
+                    .addComponent(ProximoTurnoAEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ProximosTurnosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        ProximosTurnosPanelLayout.setVerticalGroup(
+            ProximosTurnosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProximosTurnosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23)
+                .addGap(46, 46, 46)
+                .addComponent(ProximosTurnosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jLabel24)
+                .addGap(18, 18, 18)
+                .addComponent(ProximoTurnoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(ProximosTurnosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ProximosTurnosCancelarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ProximosTurnosMantenerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(17, 17, 17))
+        );
+
+        ContentLayeredPane.add(ProximosTurnosPanel, "card3");
 
         ReservarTurnoPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -351,8 +957,6 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
 
         TurnosDisponiblesReservarTurno.setBackground(new java.awt.Color(255, 255, 255));
         TurnosDisponiblesReservarTurno.setPreferredSize(new Dimension(868, 300));
-        //TurnosDisponiblesReservarTurno.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        TurnosDisponiblesReservarTurno.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         TurnosDisponiblesContenedorReservarTurno.setLayout(new javax.swing.BoxLayout(TurnosDisponiblesContenedorReservarTurno, javax.swing.BoxLayout.Y_AXIS));
         TurnosDisponiblesReservarTurno.setViewportView(TurnosDisponiblesContenedorReservarTurno);
@@ -371,6 +975,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         });
 
         BorrarButtonReservarTurno.setBackground(new java.awt.Color(204, 204, 204));
+        BorrarButtonReservarTurno.setVisible(false);
         BorrarButtonReservarTurno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 BorrarButtonReservarTurnoMousePressed(evt);
@@ -425,6 +1030,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         });
 
         ReservarButtonReservarTurno.setBackground(new java.awt.Color(0, 204, 153));
+        ReservarButtonReservarTurno.setVisible(false);
         ReservarButtonReservarTurno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 ReservarButtonReservarTurnoMousePressed(evt);
@@ -485,7 +1091,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addComponent(SearchMedicoButtonReservarTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ReservarTurnoPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ReservarTurnoPanelLayout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(ReservarTurnoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1097,7 +1703,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
 
         MainLayeredPane.add(LoginPanel, "card2");
 
-        switchLayeredPane(MainLayeredPane, LoginPanel);
+        switchLayeredPane(MainLayeredPane, InitPanel);
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
@@ -1129,20 +1735,20 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     }//GEN-LAST:event_IDLoginActionPerformed
 
     private void IDLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDLoginMouseClicked
-        ServicePersona servicePersona = new ServicePersona();
-        try{
-            Persona persona = servicePersona.login(Integer.parseInt(IDLogin.getText()), PasswordLogin.getText());
-            if (persona instanceof Paciente){
-                Paciente paciente = (Paciente)persona;
-                System.out.println(paciente.toString());
-            }
-            if (persona instanceof Medico){
-                Medico medico = (Medico)persona;
-                System.out.println(medico.toString());
-            }
-        }catch(ServiceException exception){
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+//        ServicePersona servicePersona = new ServicePersona();
+//        try{
+//            Persona persona = servicePersona.login(Integer.parseInt(IDLogin.getText()), PasswordLogin.getText());
+//            if (persona instanceof Paciente){
+//                Paciente paciente = (Paciente)persona;
+//                System.out.println(paciente.toString());
+//            }
+//            if (persona instanceof Medico){
+//                Medico medico = (Medico)persona;
+//                System.out.println(medico.toString());
+//            }
+//        }catch(ServiceException exception){
+//            JOptionPane.showMessageDialog(null, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_IDLoginMouseClicked
 
     private void IDLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IDLoginMousePressed
@@ -1325,14 +1931,24 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
             Persona persona = servicePersona.login(Integer.parseInt(IDLogin.getText()), PasswordLogin.getText());
             if (persona instanceof Paciente){
                 pacienteLogged = (Paciente)persona;
+                populateProximasConsultas();
+                switchLayeredPane(CenterLeftMenuLayeredPane, CenterLeftMenu);
+                Username.setText("Paciente");
+                switchLayeredPane(ContentLayeredPane, ProximosTurnosPanel);
                 System.out.println(pacienteLogged.toString());
             }
             if (persona instanceof Medico){
                 medicoLogged = (Medico)persona;
+                switchLayeredPane(CenterLeftMenuLayeredPane, CenterLeftMenuMedico);
+                Username.setText("Medico");
+                switchLayeredPane(ContentLayeredPane, ProximosTurnosMedicoPanel);
+                populateProximasConsultasMedico("init");
                 System.out.println(medicoLogged.toString());
             }
             setCursor(NORMAL);
             switchLayeredPane(MainLayeredPane, DashboardPanel);
+            //switchLayeredPane(ContentLayeredPane, ProximosTurnosPanel);
+            //populateProximasConsultas();
         }catch(ServiceException exception){
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -1411,6 +2027,8 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private void BorrarButtonReservarTurnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarButtonReservarTurnoMousePressed
         TurnoSeleccionadoReservarTurno.removeAll();
         TurnoSeleccionadoReservarTurno.revalidate();
+        BorrarButtonReservarTurno.setVisible(false);
+        ReservarButtonReservarTurno.setVisible(false);
     }//GEN-LAST:event_BorrarButtonReservarTurnoMousePressed
 
     private void ReservarButtonReservarTurnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReservarButtonReservarTurnoMouseEntered
@@ -1458,6 +2076,9 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                         timer[0].stop();
                     });
                     
+                    BorrarButtonReservarTurno.setVisible(false);
+                    ReservarButtonReservarTurno.setVisible(false);
+                    
                     TurnoSeleccionadoReservarTurno.removeAll();
                     TurnoSeleccionadoReservarTurno.revalidate();
                     populateConsultorioComboBox();
@@ -1474,6 +2095,148 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
             }
         }
     }//GEN-LAST:event_ReservarButtonReservarTurnoMousePressed
+
+    private void ProximosTurnosMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMenuMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_ProximosTurnosMenuMouseEntered
+
+    private void ProximosTurnosMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMenuMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_ProximosTurnosMenuMouseExited
+
+    private void ProximosTurnosMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMenuMousePressed
+        switchLayeredPane(ContentLayeredPane, ProximosTurnosPanel);
+        populateProximasConsultas();
+    }//GEN-LAST:event_ProximosTurnosMenuMousePressed
+
+    private void ProximosTurnosMantenerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMantenerButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_ProximosTurnosMantenerButtonMouseEntered
+
+    private void ProximosTurnosMantenerButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMantenerButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_ProximosTurnosMantenerButtonMouseExited
+
+    private void ProximosTurnosMantenerButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMantenerButtonMousePressed
+        if (ProximoTurnoAEliminar.getComponentCount() > 0){
+            ProximoTurnoAEliminar.removeAll();
+            ProximoTurnoAEliminar.revalidate();
+            jLabel24.setVisible(false);
+            ProximosTurnosMantenerButton.setVisible(false);
+            ProximosTurnosCancelarButton.setVisible(false);
+        }
+    }//GEN-LAST:event_ProximosTurnosMantenerButtonMousePressed
+
+    private void ProximosTurnosCancelarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosCancelarButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_ProximosTurnosCancelarButtonMouseEntered
+
+    private void ProximosTurnosCancelarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosCancelarButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_ProximosTurnosCancelarButtonMouseExited
+
+    private void ProximosTurnosCancelarButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosCancelarButtonMousePressed
+        if (ProximoTurnoAEliminar.getComponentCount() > 0){
+//            ProximoTurnoAEliminar.removeAll();
+//            ProximoTurnoAEliminar.revalidate();
+            jLabel24.setVisible(false);
+            ProximosTurnosMantenerButton.setVisible(false);
+            ProximosTurnosCancelarButton.setVisible(false);
+            JPanel jpanel = (JPanel)ProximoTurnoAEliminar.getComponent(0);
+            if (jpanel instanceof ConsultaInfoPanel){
+                try{
+                    serviceConsulta.delete(((ConsultaInfoPanel) jpanel).getConsulta().getId());
+                    JPanel panelConfirmacion = new JPanel();
+                    panelConfirmacion.setBackground(new Color(0, 204, 153));
+                    panelConfirmacion.setLayout(new BorderLayout());
+                    panelConfirmacion.setPreferredSize(new Dimension(866, 72));
+                    JLabel reservado = new JLabel("Turno cancelado");
+                    reservado.setPreferredSize(new Dimension(Integer.MAX_VALUE, 18));
+                    reservado.setHorizontalAlignment(JLabel.CENTER);
+                    reservado.setForeground(Color.white);
+                    reservado.setFont(new Font("Roboto Medium", 0, 18));
+                    panelConfirmacion.add(reservado, BorderLayout.CENTER);
+                    
+                    final Timer[] timer2 = new Timer[1];
+                    timer2[0] = new Timer(2000, e -> {
+                        ProximoTurnoAEliminar.removeAll();
+                        ProximoTurnoAEliminar.revalidate();
+                        timer2[0].stop();
+                    });
+                    
+                    ProximoTurnoAEliminar.removeAll();
+                    ProximoTurnoAEliminar.revalidate();
+                    populateProximasConsultas();
+
+                    ProximoTurnoAEliminar.add(panelConfirmacion);
+                    ProximoTurnoAEliminar.revalidate();
+                    timer2[0].start();
+                }catch(ServiceException exception){
+                    JOptionPane.showMessageDialog(null, "No se pudo cancelar la consulta", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            
+        }
+    }//GEN-LAST:event_ProximosTurnosCancelarButtonMousePressed
+
+    private void HistorialTurnosMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistorialTurnosMenuMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_HistorialTurnosMenuMouseEntered
+
+    private void HistorialTurnosMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistorialTurnosMenuMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_HistorialTurnosMenuMouseExited
+
+    private void HistorialTurnosMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistorialTurnosMenuMousePressed
+        switchLayeredPane(ContentLayeredPane, HistorialTurnosPanel);
+        populateHistorialConsultas();
+    }//GEN-LAST:event_HistorialTurnosMenuMousePressed
+
+    private void PacientePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PacientePanelMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_PacientePanelMouseEntered
+
+    private void PacientePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PacientePanelMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_PacientePanelMouseExited
+
+    private void AdminPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminPanelMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_AdminPanelMouseExited
+
+    private void AdminPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminPanelMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_AdminPanelMouseEntered
+
+    private void PacientePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PacientePanelMousePressed
+        setCursor(NORMAL);
+        switchLayeredPane(MainLayeredPane, LoginPanel);
+    }//GEN-LAST:event_PacientePanelMousePressed
+
+    private void ProximosTurnosMedicoFechaComboBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMedicoFechaComboBoxMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_ProximosTurnosMedicoFechaComboBoxMouseEntered
+
+    private void ProximosTurnosMedicoFechaComboBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMedicoFechaComboBoxMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_ProximosTurnosMedicoFechaComboBoxMouseExited
+
+    private void ProximosTurnosMedicoFechaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProximosTurnosMedicoFechaComboBoxActionPerformed
+        String param = ProximosTurnosMedicoFechaComboBox.getSelectedItem().toString();
+        populateProximasConsultasMedico(param);
+    }//GEN-LAST:event_ProximosTurnosMedicoFechaComboBoxActionPerformed
+
+    private void ProximosTurnosMenuMedicoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMenuMedicoMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_ProximosTurnosMenuMedicoMouseEntered
+
+    private void ProximosTurnosMenuMedicoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMenuMedicoMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_ProximosTurnosMenuMedicoMouseExited
+
+    private void AdministrarMedicosSearchTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministrarMedicosSearchTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdministrarMedicosSearchTextfieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1511,18 +2274,34 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AdminPanel;
+    private javax.swing.JPanel AdministrarMedicosContenedor;
+    private javax.swing.JLabel AdministrarMedicosMenu;
+    private javax.swing.JPanel AdministrarMedicosPanel;
+    private javax.swing.JScrollPane AdministrarMedicosScrollPane;
+    private javax.swing.JPanel AdministrarMedicosSearchButton;
+    private javax.swing.JTextField AdministrarMedicosSearchTextfield;
+    private javax.swing.JLabel AdministrarPacientesMenu;
     private javax.swing.JLabel BackToLogin;
     private javax.swing.JPanel BorrarButtonReservarTurno;
     private javax.swing.JLabel ButtonLabelLogin;
     private javax.swing.JPanel ButtonPanel;
     private javax.swing.JPanel CenterLeftMenu;
+    private javax.swing.JPanel CenterLeftMenuAdmin;
     private javax.swing.JLayeredPane CenterLeftMenuLayeredPane;
+    private javax.swing.JPanel CenterLeftMenuMedico;
     private javax.swing.JComboBox<String> ConsultorioComboBoxReservarTurno;
     private javax.swing.JLayeredPane ContentLayeredPane;
     private javax.swing.JPanel DashboardPanel;
+    private javax.swing.JPanel HistorialTurnosContenedor;
     private javax.swing.JLabel HistorialTurnosMenu;
+    private javax.swing.JPanel HistorialTurnosPanel;
+    private javax.swing.JScrollPane HistorialTurnosScrollPane;
     private javax.swing.JTextField IDLogin;
     private javax.swing.JLabel IniciarSesion;
+    private javax.swing.JPanel InitContenedorPanel;
+    private javax.swing.JLayeredPane InitLayeredPane;
+    private javax.swing.JPanel InitPanel;
     private javax.swing.JPanel LeftLoginPanel;
     private javax.swing.JPanel LeftMenu;
     private javax.swing.JPanel LoginForm;
@@ -1532,8 +2311,20 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private javax.swing.JPanel MainPanel;
     private javax.swing.JComboBox<Medico> MedicoComboBoxReservarTurno;
     private javax.swing.JSeparator NacimientoPacienteSeparator;
+    private javax.swing.JPanel PacientePanel;
     private javax.swing.JPasswordField PasswordLogin;
+    private javax.swing.JPanel ProximoTurnoAEliminar;
+    private javax.swing.JPanel ProximosTurnosCancelarButton;
+    private javax.swing.JPanel ProximosTurnosContenedor;
+    private javax.swing.JPanel ProximosTurnosMantenerButton;
+    private javax.swing.JPanel ProximosTurnosMedicoContenedor;
+    private javax.swing.JComboBox<String> ProximosTurnosMedicoFechaComboBox;
+    private javax.swing.JPanel ProximosTurnosMedicoPanel;
+    private javax.swing.JScrollPane ProximosTurnosMedicoScrollPane;
     private javax.swing.JLabel ProximosTurnosMenu;
+    private javax.swing.JLabel ProximosTurnosMenuMedico;
+    private javax.swing.JPanel ProximosTurnosPanel;
+    private javax.swing.JScrollPane ProximosTurnosScrollPane;
     private javax.swing.JPanel RegisterForm;
     private javax.swing.JLabel RegisterOptionLogin;
     private javax.swing.JTextField RegisterPacienteApellido;
@@ -1548,6 +2339,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private javax.swing.JPasswordField RegisterPacientePassword;
     private javax.swing.JPasswordField RegisterPacientePasswordRepeat;
     private javax.swing.ButtonGroup RegisterPacienteSexo;
+    private javax.swing.JLabel ReportesMenu;
     private javax.swing.JPanel ReservarButtonReservarTurno;
     private javax.swing.JLabel ReservarTurnoMenu;
     private javax.swing.JPanel ReservarTurnoPanel;
@@ -1577,7 +2369,21 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1586,6 +2392,8 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1729,15 +2537,34 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         return consultoriosMedicos;
     }
     
-    private ArrayList<Consulta> searchAllConsultasByMedico(int dni, int activo){
+    private ArrayList<Consulta> searchAllConsultasByMedico(int dni, int status){
         ServiceConsulta serviceConsulta = new ServiceConsulta();
         ArrayList<Consulta> consultas = null;
         try{
-            consultas = serviceConsulta.serchAllByMedico(dni, activo);
+            consultas = serviceConsulta.serchAllByMedico(dni, status);
         }catch(ServiceException exception){
             JOptionPane.showMessageDialog(null, "Error en el servidor", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return consultas;
+    }
+    
+    private ArrayList<Consulta> searchAllConsultasByPaciente(int dni, int status){
+        ServiceConsulta serviceConsulta = new ServiceConsulta();
+        ArrayList<Consulta> consultas = null;
+        try{
+            consultas = serviceConsulta.serchAllByPaciente(dni, status);
+        }catch(ServiceException exception){
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar las consultas", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return consultas;
+    }
+    
+    private void cobrarConsultas(){
+        try{
+            serviceConsulta.cobrarConsultas();
+        }catch(ServiceException exception){
+            JOptionPane.showMessageDialog(null, "Error en el servidor", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private void populateMedicoComboBox(String... apellido){
@@ -1782,9 +2609,9 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
             ArrayList<Consulta> consultasNew = serviceConsulta.generateArrayConsultas(paciente, consultas, consultoriosMedicos);
             
             for (Consulta consulta : consultasNew){
-                ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta);
+                ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta, "paciente");
                 panel.setPanelEventListener(this);
-                panel.addMouseListener();
+                panel.addMouseListener("reservar");
                 TurnosDisponiblesContenedorReservarTurno.add(Box.createVerticalStrut(2));
                 TurnosDisponiblesContenedorReservarTurno.add(panel);
             }
@@ -1804,18 +2631,18 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                 for (Consulta consulta : consultasNew){
                     if (param[0].equals(consulta.getConsultorio())){
                         System.out.println("FLAG 80");
-                        ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta);
+                        ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta, "paciente");
                         panel.setPanelEventListener(this);
-                        panel.addMouseListener();
+                        panel.addMouseListener("reservar");
                         TurnosDisponiblesContenedorReservarTurno.add(Box.createVerticalStrut(2));
                         TurnosDisponiblesContenedorReservarTurno.add(panel);
                     }
                 }
             }else{
                 for (Consulta consulta : consultasNew){
-                    ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta);
+                    ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta, "paciente");
                     panel.setPanelEventListener(this);
-                    panel.addMouseListener();
+                    panel.addMouseListener("reservar");
                     TurnosDisponiblesContenedorReservarTurno.add(Box.createVerticalStrut(2));
                     TurnosDisponiblesContenedorReservarTurno.add(panel);
                 }
@@ -1825,6 +2652,105 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         }
         TurnosDisponiblesReservarTurno.revalidate();
     }
+    
+    
+    
+    public void populateProximasConsultas(){
+        cobrarConsultas();
+        ProximosTurnosContenedor.removeAll();
+        ProximosTurnosContenedor.revalidate();
+        ArrayList<Consulta> consultas = searchAllConsultasByPaciente(pacienteLogged.getDNI(), 1);
+        for (Consulta consulta : consultas){
+            ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta, "paciente");
+            panel.setPanelEventListener(this);
+            panel.addMouseListener("proximos");
+            ProximosTurnosContenedor.add(Box.createVerticalStrut(2));
+            ProximosTurnosContenedor.add(panel);
+        }
+        int height = consultas.size() * 74;
+        ProximosTurnosContenedor.setPreferredSize(new Dimension(895, height));
+    }
+    
+    public void populateHistorialConsultas(){
+        cobrarConsultas();
+        HistorialTurnosContenedor.removeAll();
+        HistorialTurnosContenedor.revalidate();
+        ArrayList<Consulta> consultas = searchAllConsultasByPaciente(pacienteLogged.getDNI(), 0);
+        for (Consulta consulta : consultas){
+            ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta, "paciente");
+            panel.setPanelEventListener(this);
+            panel.addMouseListener(".");
+            HistorialTurnosContenedor.add(Box.createVerticalStrut(2));
+            HistorialTurnosContenedor.add(panel);
+        }
+        int height = consultas.size() * 74;
+        HistorialTurnosContenedor.setPreferredSize(new Dimension(895, height));
+    }
+    
+    public void populateProximasConsultasMedico(String... localDate){
+        ArrayList<Consulta> consultas = searchAllConsultasByMedico(medicoLogged.getDNI(), 1);
+        if (localDate.length > 0){
+//            if (localDate.length > 1){
+//                populateProximasConsultasMedicoFechaComboBox(consultas);
+//            }
+            ArrayList<Consulta> consultasFiltradas = new ArrayList<>();
+            if (localDate[0].equals("Fechas posteriores")){
+                for (Consulta consulta : consultas){
+                    if (consulta.getFecha().isAfter(LocalDate.now().plusMonths(1))){
+                        consultasFiltradas.add(consulta);
+                    }
+                }
+                consultas = consultasFiltradas;
+            }
+            else{
+                if (localDate[0].equals("init")){
+                    populateProximasConsultasMedicoFechaComboBox(consultas);
+                }
+                else{
+                    if (!localDate[0].equals("Todas")){
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM. yyy");
+                        LocalDate date = LocalDate.parse(localDate[0], formatter);
+                        for (Consulta consulta : consultas){
+                            if (consulta.getFecha().equals(date)){
+                                consultasFiltradas.add(consulta);
+                            }
+                        }
+                        consultas = consultasFiltradas;
+                    }
+                }
+            }
+            
+        }
+        ProximosTurnosMedicoContenedor.removeAll();
+        ProximosTurnosMedicoContenedor.revalidate();
+        for (Consulta consulta : consultas){
+            ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta, "medico");
+            panel.setPanelEventListener(this);
+            panel.addMouseListener(".");
+            ProximosTurnosMedicoContenedor.add(Box.createVerticalStrut(2));
+            ProximosTurnosMedicoContenedor.add(panel);
+        }
+        if (consultas.isEmpty()){
+            ProximosTurnosMedicoContenedor.setPreferredSize(new Dimension(890, 450));
+        }
+        else{
+            int height = consultas.size() * 74;
+            ProximosTurnosMedicoContenedor.setPreferredSize(new Dimension(890, height));
+        }
+        ProximosTurnosMedicoContenedor.revalidate();
+    }
+    
+    public void populateProximasConsultasMedicoFechaComboBox(ArrayList<Consulta> consultas){
+        ProximosTurnosMedicoFechaComboBox.removeAllItems();
+        ArrayList<String> fechas = serviceConsulta.generateArrayFechas(consultas);
+        ProximosTurnosMedicoFechaComboBox.addItem("Todas");
+        for (String fecha : fechas){
+            ProximosTurnosMedicoFechaComboBox.addItem(fecha);
+        }
+        ProximosTurnosMedicoFechaComboBox.addItem("Fechas posteriores");
+    }
+    
+    
     
 //    private void filterConsultasByConsultorio(String consultorio){
 //        Arra
@@ -1840,14 +2766,28 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     
     
     @Override
-    public void onConsultaEvent(Consulta consulta){
+    public void onReservarTurnoEvent(Consulta consulta){
         System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         System.out.println(consulta.toString());
-        ConsultaInfoPanel panelConsultaSelected = new ConsultaInfoPanel(consulta);
+        ConsultaInfoPanel panelConsultaSelected = new ConsultaInfoPanel(consulta, "paciente");
         TurnoSeleccionadoReservarTurno.removeAll();
+        BorrarButtonReservarTurno.setVisible(true);
+        ReservarButtonReservarTurno.setVisible(true);
         TurnoSeleccionadoReservarTurno.add(panelConsultaSelected, BorderLayout.CENTER);
         TurnoSeleccionadoReservarTurno.revalidate();
         System.out.println("com.company.gui.MainFrame.onConsultaEvent()");
+    }
+    
+    @Override
+    public void onProximosTurnosEvent(Consulta consulta){
+        ConsultaInfoPanel panelConsultaSelected = new ConsultaInfoPanel(consulta, "paciente");
+        ProximoTurnoAEliminar.removeAll();
+        ProximoTurnoAEliminar.revalidate();
+        jLabel24.setVisible(true);
+        ProximosTurnosMantenerButton.setVisible(true);
+        ProximosTurnosCancelarButton.setVisible(true);
+        ProximoTurnoAEliminar.add(panelConsultaSelected, BorderLayout.CENTER);
+        ProximoTurnoAEliminar.revalidate();
     }
     
     @Override
