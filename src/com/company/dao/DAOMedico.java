@@ -112,21 +112,15 @@ public class DAOMedico implements IDAO<Medico>{
         }
     }
     
-    public void deactivate(Medico object, int primaryKey) throws DAOException{
+    public void manageActivation(int activo, int dni) throws DAOException{
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try{
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            preparedStatement = connection.prepareStatement("UPDATE MEDICOS SET DNI=?, NOMBRE=?, APELLIDO=?, HONORARIOS=?, OBRASOCIAL=?, ACTIVO=?, PASSWORD=? WHERE DNI=? ");
+            preparedStatement = connection.prepareStatement("UPDATE MEDICOS SET ACTIVO=? WHERE DNI=? ");
             System.out.println(preparedStatement);
-            preparedStatement.setInt(1, object.getDNI());
-            preparedStatement.setString(2, object.getNombre());
-            preparedStatement.setString(3, object.getApellido());
-            preparedStatement.setInt(4, object.getHonorarios());
-            preparedStatement.setString(5, object.getObrasocial());
-            preparedStatement.setInt(6, 0);
-            preparedStatement.setString(7, object.getPassword());
-            preparedStatement.setInt(8, primaryKey);
+            preparedStatement.setInt(1, activo);
+            preparedStatement.setInt(2, dni);
             int result = preparedStatement.executeUpdate();
             System.out.println("Registros actualizados " + result);
         }catch (SQLException exception){

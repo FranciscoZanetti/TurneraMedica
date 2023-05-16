@@ -16,13 +16,13 @@ import javax.swing.JPanel;
  *
  * @author User
  */
-public class ConsultaFieldPanel extends JPanel{
+public class InfoFieldPanel extends JPanel{
     
-    public ConsultaFieldPanel(String title, String field){
+    public InfoFieldPanel(String title, String field){
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setBackground(Color.WHITE);
-        if (title == "Hora"){
+        if ((title == "Hora") || (title == "Activo")){
             setPreferredSize(new Dimension(100, 72));
             setMaximumSize(new Dimension(100, 72));
         }

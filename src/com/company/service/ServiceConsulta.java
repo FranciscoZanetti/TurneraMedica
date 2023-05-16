@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -76,6 +77,61 @@ public class ServiceConsulta {
         }
     }
     
+    public void deleteByMedico(int medico) throws ServiceException{
+        try{
+            daoConsulta.delete(medico);
+        }catch (DAOException exception){
+            throw new ServiceException(exception.getMessage());
+        }
+    }
+    
+    public void deleteMissmatches(int dni)throws ServiceException{
+        try{
+            ArrayList<Consulta> consultas = searchAllByMedico(dni, 1);
+            ServiceConsultorioMedico serviceConsultorioMedico = new ServiceConsultorioMedico();
+            ArrayList<ConsultorioMedico> consultoriosMedicos = serviceConsultorioMedico.searchAll(dni);
+            
+            Locale locale = new Locale("es", "ES");
+            TextStyle style = TextStyle.FULL;
+            
+            for(Consulta consulta: consultas){
+                int verifier = 0;
+                if (consultoriosMedicos.isEmpty()){
+                    try{
+                        delete(consulta.getId());
+                    }catch(ServiceException exception){
+                        throw new ServiceException(exception.getMessage());
+                    }
+                }
+                else{
+                    for (ConsultorioMedico consultorioMedico : consultoriosMedicos){
+                        String nombreDiaSemana = consulta.getFecha().getDayOfWeek().getDisplayName(style, locale);
+
+                        if (!nombreDiaSemana.equals(consultorioMedico.getDia())){
+                            verifier = 1;
+                        }
+                        else{
+                            if (consulta.getHora().isBefore(consultorioMedico.getEntrada()) || consulta.getHora().isAfter(consultorioMedico.getSalida())){
+                                verifier = 1;
+                            }
+                        }
+                    }
+                    if (verifier == 1){
+                        try{
+                            delete(consulta.getId());
+                        }catch(ServiceException exception){
+                            throw new ServiceException(exception.getMessage());
+                        }
+                    }
+                }
+                
+            }
+            
+        }catch(ServiceException exception){
+            throw new ServiceException(exception.getMessage());
+        }
+    }
+    
     public void deactivate(Consulta consulta) throws ServiceException{
         try{
             daoConsulta.deactivate(consulta);
@@ -95,7 +151,7 @@ public class ServiceConsulta {
         }
     }
     
-    public ArrayList<Consulta> serchAllBetween(int activo, LocalDate start, LocalDate end) throws ServiceException{
+    public ArrayList<Consulta> searchAllBetween(int activo, LocalDate start, LocalDate end) throws ServiceException{
         ArrayList<Consulta> consultas = new ArrayList<>();
         try {
             consultas = daoConsulta.searchAllBetween(activo, start, end);
@@ -106,7 +162,7 @@ public class ServiceConsulta {
         }
     }
     
-    public ArrayList<Consulta> serchAllBetweenByMedico(int dni, LocalDate start, LocalDate end) throws ServiceException{
+    public ArrayList<Consulta> searchAllBetweenByMedico(int dni, LocalDate start, LocalDate end) throws ServiceException{
         ArrayList<Consulta> consultas = new ArrayList<>();
         try {
             consultas = daoConsulta.searchAllBetweenByMedico(dni, start, end);
@@ -117,7 +173,7 @@ public class ServiceConsulta {
         }
     }
     
-    public ArrayList<Consulta> serchAllByMedico(int dni, int status) throws ServiceException{
+    public ArrayList<Consulta> searchAllByMedico(int dni, int status) throws ServiceException{
         ArrayList<Consulta> consultas = new ArrayList<>();
         try {
             consultas = daoConsulta.searchAllByMedico(dni, status);
@@ -128,7 +184,7 @@ public class ServiceConsulta {
         }
     }
     
-    public ArrayList<Consulta> serchAllByPaciente(int dni, int status) throws ServiceException{
+    public ArrayList<Consulta> searchAllByPaciente(int dni, int status) throws ServiceException{
         ArrayList<Consulta> consultas = new ArrayList<>();
         try {
             consultas = daoConsulta.searchAllByPaciente(dni, status);

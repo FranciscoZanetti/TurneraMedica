@@ -31,24 +31,24 @@ public class ConsultaInfoPanel extends JPanel {
         
         this.consulta = consulta;
         
-        ConsultaFieldPanel nombreApellido;
+        InfoFieldPanel nombreApellido;
         if (user.equals("paciente")){
             String nombreCompleto = consulta.getMedico().getNombre() + " " + consulta.getMedico().getApellido();
-            nombreApellido = new ConsultaFieldPanel("Médico", nombreCompleto);
+            nombreApellido = new InfoFieldPanel("Médico", nombreCompleto);
         }
         else{
             String nombreCompleto = consulta.getPaciente().getNombre() + " " + consulta.getPaciente().getApellido();
-            nombreApellido = new ConsultaFieldPanel("Paciente", nombreCompleto);
+            nombreApellido = new InfoFieldPanel("Paciente", nombreCompleto);
         }
-        ConsultaFieldPanel consultorio = new ConsultaFieldPanel("Consultorio", consulta.getConsultorio());
+        InfoFieldPanel consultorio = new InfoFieldPanel("Consultorio", consulta.getConsultorio());
         
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM. yyyy", new Locale("es", "ES"));
         String formattedDate = consulta.getFecha().format(formatter);
-        ConsultaFieldPanel fecha = new ConsultaFieldPanel("Fecha", formattedDate);
+        InfoFieldPanel fecha = new InfoFieldPanel("Fecha", formattedDate);
         
-        ConsultaFieldPanel hora = new ConsultaFieldPanel("Hora", consulta.getHora().toString());
-        ConsultaFieldPanel obraSocial = new ConsultaFieldPanel("Obra Social", consulta.getMedico().getObrasocial());
-        ConsultaFieldPanel precio = new ConsultaFieldPanel("Precio", String.valueOf((Integer) consulta.getPrecio()));
+        InfoFieldPanel hora = new InfoFieldPanel("Hora", consulta.getHora().toString());
+        InfoFieldPanel obraSocial = new InfoFieldPanel("Obra Social", consulta.getMedico().getObrasocial());
+        InfoFieldPanel precio = new InfoFieldPanel("Precio", String.valueOf((Integer) consulta.getPrecio()));
         
         setBackground(Color.WHITE);
         setLayout(new FlowLayout(FlowLayout.LEFT));

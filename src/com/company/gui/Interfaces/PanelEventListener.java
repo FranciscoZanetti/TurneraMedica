@@ -5,6 +5,7 @@
 package com.company.gui.Interfaces;
 
 import com.company.entidades.Consulta;
+import com.company.entidades.Medico;
 
 /**
  *
@@ -13,6 +14,7 @@ import com.company.entidades.Consulta;
 public interface PanelEventListener {
     void onReservarTurnoEvent(Consulta consulta);
     void onProximosTurnosEvent(Consulta consulta);
+    void onAdministrarMedicosEvent(Medico medico);
     void mouseEntered();
     void mouseExited();
 }

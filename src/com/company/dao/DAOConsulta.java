@@ -83,6 +83,32 @@ public class DAOConsulta {
         }
     }
     
+    public void deleteByMedico(int medico) throws DAOException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try{
+//            Class.forName(DB_JDBC_DRIVER);
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            preparedStatement = connection.prepareStatement("DELETE FROM CONSULTAS WHERE MEDICO=? AND STATUS=1");
+            System.out.println(preparedStatement);
+            preparedStatement.setInt(1, medico);
+            int result = preparedStatement.executeUpdate();
+            System.out.println("Registros eliminados " + result);
+        }catch (SQLException exception){
+            exception.printStackTrace();
+            throw new DAOException(exception.getMessage());
+        }finally {
+            try {
+//                if (preparedStatement != null){
+                    preparedStatement.close();
+//                }
+            }catch (SQLException exception){
+                exception.printStackTrace();
+                throw new DAOException(exception.getMessage());
+            }
+        }
+    }
+    
     public void deactivate(Consulta object) throws DAOException{
         Connection connection = null;
         PreparedStatement preparedStatement = null;

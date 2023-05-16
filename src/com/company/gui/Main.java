@@ -38,7 +38,7 @@ public class Main {
         ArrayList<ConsultorioMedico> consultoriosMedicos = serviceConsultorioMedico.searchAll(2516162);
         
         ServiceConsulta serviceConsulta = new ServiceConsulta();
-        ArrayList<Consulta> consultas = serviceConsulta.serchAllByMedico(2516162, 1);
+        ArrayList<Consulta> consultas = serviceConsulta.searchAllByMedico(2516162, 1);
         ServicePaciente servicePaciente = new ServicePaciente();
         Paciente paciente = servicePaciente.search(1515);
         

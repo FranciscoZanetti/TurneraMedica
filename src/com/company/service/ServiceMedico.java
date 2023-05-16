@@ -68,16 +68,10 @@ public class ServiceMedico {
         }
     }
     
-    public void deactivate(Medico medico, int primaryKey) throws ServiceException{
+    public void manageActivation(int activo, int dni) throws ServiceException{
         try{
-            validarMedico(medico);
-            try{
-                ValidarNumeroPositivo validarNumeroPositivo = new ValidarNumeroPositivo(primaryKey);
-            }catch (ServiceException exception){
-                throw new ServiceException(exception.getMessage());
-            }
-            daoMedico.deactivate(medico, primaryKey);
-        }catch (DAOException | ServiceException exception){
+            daoMedico.manageActivation(activo, dni);
+        }catch (DAOException exception){
             throw new ServiceException(exception.getMessage());
         }
     }

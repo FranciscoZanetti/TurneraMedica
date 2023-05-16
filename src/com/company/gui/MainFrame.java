@@ -11,6 +11,7 @@ import com.company.entidades.Paciente;
 import com.company.entidades.Persona;
 import com.company.gui.ConsultaGui.ConsultaInfoPanel;
 import com.company.gui.Interfaces.PanelEventListener;
+import com.company.gui.MedicoGui.MedicoInfoPanel;
 import com.company.gui.MedicoGui.MedicoListCellRenderer;
 import com.company.service.ServiceConsulta;
 import com.company.service.ServiceConsultorioMedico;
@@ -29,7 +30,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
@@ -109,6 +112,89 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         Salir = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         ContentLayeredPane = new javax.swing.JLayeredPane();
+        EditarMedicoPanel = new javax.swing.JPanel();
+        EditarMedicoTitle = new javax.swing.JLabel();
+        EditarMedicoDNI = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        EditarMedicoNombre = new javax.swing.JTextField();
+        EditarMedicoApellido = new javax.swing.JTextField();
+        EditarMedicoHonorarios = new javax.swing.JTextField();
+        jSeparator14 = new javax.swing.JSeparator();
+        jSeparator15 = new javax.swing.JSeparator();
+        jSeparator16 = new javax.swing.JSeparator();
+        jSeparator17 = new javax.swing.JSeparator();
+        jSeparator18 = new javax.swing.JSeparator();
+        EditarMedicoRepetirPassword = new javax.swing.JPasswordField();
+        EditarMedicoPassword = new javax.swing.JPasswordField();
+        jSeparator19 = new javax.swing.JSeparator();
+        jSeparator20 = new javax.swing.JSeparator();
+        EditarMedicoGuardarButton = new javax.swing.JPanel();
+        jLabel45 = new javax.swing.JLabel();
+        EditarMedicoBorrarButton = new javax.swing.JPanel();
+        jLabel46 = new javax.swing.JLabel();
+        EditarMedicoConfirmacionPanel = new javax.swing.JPanel();
+        jLabel47 = new javax.swing.JLabel();
+        EditarMedicoConsultoriosMedicosTitle = new javax.swing.JLabel();
+        EditarMedicoCancelarButton = new javax.swing.JPanel();
+        jLabel69 = new javax.swing.JLabel();
+        EditarMedicoConsultoriosMedicosContenedor = new javax.swing.JPanel();
+        EditarMedicoConsultoriosMedicosGuardarButton = new javax.swing.JPanel();
+        jLabel67 = new javax.swing.JLabel();
+        EditarMedicoConsultoriosMedicosBorrarButton = new javax.swing.JPanel();
+        jLabel66 = new javax.swing.JLabel();
+        EditarMedicoConsultoriosMedicosPanel = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel48 = new javax.swing.JLabel();
+        LunesConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        LunesEntradaConsultoriosMedicos = new javax.swing.JTextField();
+        LunesSalidaConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel60 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        MartesConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel55 = new javax.swing.JLabel();
+        MartesEntradaConsultoriosMedicos = new javax.swing.JTextField();
+        MartesSalidaConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel61 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel50 = new javax.swing.JLabel();
+        MiercolesConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel56 = new javax.swing.JLabel();
+        MiercolesEntradaConsultoriosMedicos = new javax.swing.JTextField();
+        MiercolesSalidaConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel62 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel51 = new javax.swing.JLabel();
+        JuevesConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel57 = new javax.swing.JLabel();
+        JuevesEntradaConsultoriosMedicos = new javax.swing.JTextField();
+        JuevesSalidaConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel63 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel53 = new javax.swing.JLabel();
+        SabadoConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel59 = new javax.swing.JLabel();
+        SabadoEntradaConsultoriosMedicos = new javax.swing.JTextField();
+        SabadoSalidaConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel65 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel52 = new javax.swing.JLabel();
+        ViernesConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel58 = new javax.swing.JLabel();
+        ViernesEntradaConsultoriosMedicos = new javax.swing.JTextField();
+        ViernesSalidaConsultoriosMedicos = new javax.swing.JTextField();
+        jLabel64 = new javax.swing.JLabel();
+        EditarMedicoDesactivarButton = new javax.swing.JPanel();
+        EditarMedicoDesactivarText = new javax.swing.JLabel();
+        EditarMedicoID = new javax.swing.JLabel();
+        EditarMedicoObraSocial = new javax.swing.JComboBox<>();
         AdministrarMedicosPanel = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
         AdministrarMedicosScrollPane = new javax.swing.JScrollPane();
@@ -118,6 +204,10 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         jSeparator12 = new javax.swing.JSeparator();
         AdministrarMedicosSearchButton = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
+        AdministrarMedicosActivoComboBox = new javax.swing.JComboBox<>();
+        jSeparator13 = new javax.swing.JSeparator();
+        AdministrarMedicoAgregarButton = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
         ProximosTurnosMedicoPanel = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         ProximosTurnosMedicoScrollPane = new javax.swing.JScrollPane();
@@ -227,6 +317,9 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         AdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         AdminPanel.setPreferredSize(new java.awt.Dimension(300, 400));
         AdminPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AdminPanelMousePressed(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 AdminPanelMouseExited(evt);
             }
@@ -386,14 +479,41 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         AdministrarMedicosMenu.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         AdministrarMedicosMenu.setForeground(new java.awt.Color(255, 255, 255));
         AdministrarMedicosMenu.setText("Administrar médicos");
+        AdministrarMedicosMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AdministrarMedicosMenuMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdministrarMedicosMenuMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdministrarMedicosMenuMouseEntered(evt);
+            }
+        });
 
         AdministrarPacientesMenu.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         AdministrarPacientesMenu.setForeground(new java.awt.Color(255, 255, 255));
         AdministrarPacientesMenu.setText("Administrar pacientes");
+        AdministrarPacientesMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdministrarPacientesMenuMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdministrarPacientesMenuMouseEntered(evt);
+            }
+        });
 
         ReportesMenu.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         ReportesMenu.setForeground(new java.awt.Color(255, 255, 255));
         ReportesMenu.setText("Reportes");
+        ReportesMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ReportesMenuMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ReportesMenuMouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout CenterLeftMenuAdminLayout = new javax.swing.GroupLayout(CenterLeftMenuAdmin);
         CenterLeftMenuAdmin.setLayout(CenterLeftMenuAdminLayout);
@@ -570,6 +690,950 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
 
         ContentLayeredPane.setLayout(new java.awt.CardLayout());
 
+        EditarMedicoPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        EditarMedicoTitle.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        EditarMedicoTitle.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoTitle.setText("Agregar médico");
+
+        EditarMedicoDNI.setBackground(new java.awt.Color(255, 255, 255));
+        EditarMedicoDNI.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
+        EditarMedicoDNI.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoDNI.setBorder(null);
+        EditarMedicoDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EditarMedicoDNIKeyPressed(evt);
+            }
+        });
+
+        jLabel38.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel38.setText("DNI");
+
+        jLabel39.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel39.setText("Nombre");
+
+        jLabel40.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel40.setText("Apellido");
+
+        jLabel41.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel41.setText("Obra social");
+
+        jLabel42.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel42.setText("Honorarios");
+
+        jLabel43.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel43.setText("Repetir contraseña");
+
+        jLabel44.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel44.setText("Contraseña");
+
+        EditarMedicoNombre.setBackground(new java.awt.Color(255, 255, 255));
+        EditarMedicoNombre.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
+        EditarMedicoNombre.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoNombre.setBorder(null);
+
+        EditarMedicoApellido.setBackground(new java.awt.Color(255, 255, 255));
+        EditarMedicoApellido.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
+        EditarMedicoApellido.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoApellido.setBorder(null);
+
+        EditarMedicoHonorarios.setBackground(new java.awt.Color(255, 255, 255));
+        EditarMedicoHonorarios.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
+        EditarMedicoHonorarios.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoHonorarios.setBorder(null);
+        EditarMedicoHonorarios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EditarMedicoHonorariosKeyPressed(evt);
+            }
+        });
+
+        EditarMedicoRepetirPassword.setBackground(new java.awt.Color(255, 255, 255));
+        EditarMedicoRepetirPassword.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
+        EditarMedicoRepetirPassword.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoRepetirPassword.setBorder(null);
+        EditarMedicoRepetirPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EditarMedicoRepetirPasswordKeyPressed(evt);
+            }
+        });
+
+        EditarMedicoPassword.setBackground(new java.awt.Color(255, 255, 255));
+        EditarMedicoPassword.setFont(new java.awt.Font("Roboto Light", 0, 16)); // NOI18N
+        EditarMedicoPassword.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoPassword.setBorder(null);
+        EditarMedicoPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EditarMedicoPasswordKeyPressed(evt);
+            }
+        });
+
+        EditarMedicoGuardarButton.setBackground(new java.awt.Color(0, 204, 153));
+        EditarMedicoGuardarButton.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoGuardarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EditarMedicoGuardarButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EditarMedicoGuardarButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditarMedicoGuardarButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel45.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel45.setText("Guardar");
+
+        javax.swing.GroupLayout EditarMedicoGuardarButtonLayout = new javax.swing.GroupLayout(EditarMedicoGuardarButton);
+        EditarMedicoGuardarButton.setLayout(EditarMedicoGuardarButtonLayout);
+        EditarMedicoGuardarButtonLayout.setHorizontalGroup(
+            EditarMedicoGuardarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoGuardarButtonLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel45)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        EditarMedicoGuardarButtonLayout.setVerticalGroup(
+            EditarMedicoGuardarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoGuardarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel45, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        EditarMedicoBorrarButton.setBackground(new java.awt.Color(204, 204, 204));
+        EditarMedicoBorrarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EditarMedicoBorrarButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EditarMedicoBorrarButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditarMedicoBorrarButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel46.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel46.setText("Borrar");
+
+        javax.swing.GroupLayout EditarMedicoBorrarButtonLayout = new javax.swing.GroupLayout(EditarMedicoBorrarButton);
+        EditarMedicoBorrarButton.setLayout(EditarMedicoBorrarButtonLayout);
+        EditarMedicoBorrarButtonLayout.setHorizontalGroup(
+            EditarMedicoBorrarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoBorrarButtonLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jLabel46)
+                .addGap(31, 31, 31))
+        );
+        EditarMedicoBorrarButtonLayout.setVerticalGroup(
+            EditarMedicoBorrarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoBorrarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        EditarMedicoConfirmacionPanel.setBackground(new java.awt.Color(0, 204, 153));
+        EditarMedicoConfirmacionPanel.setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel47.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel47.setText("Guardado con éxito");
+
+        javax.swing.GroupLayout EditarMedicoConfirmacionPanelLayout = new javax.swing.GroupLayout(EditarMedicoConfirmacionPanel);
+        EditarMedicoConfirmacionPanel.setLayout(EditarMedicoConfirmacionPanelLayout);
+        EditarMedicoConfirmacionPanelLayout.setHorizontalGroup(
+            EditarMedicoConfirmacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoConfirmacionPanelLayout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(jLabel47)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+        EditarMedicoConfirmacionPanelLayout.setVerticalGroup(
+            EditarMedicoConfirmacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoConfirmacionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        EditarMedicoConsultoriosMedicosTitle.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        EditarMedicoConsultoriosMedicosTitle.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoConsultoriosMedicosTitle.setText("Administrar asignaciones a consultorios");
+        EditarMedicoConsultoriosMedicosTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosTitleMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosTitleMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosTitleMouseEntered(evt);
+            }
+        });
+
+        EditarMedicoCancelarButton.setBackground(new java.awt.Color(204, 204, 204));
+        EditarMedicoCancelarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EditarMedicoCancelarButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EditarMedicoCancelarButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditarMedicoCancelarButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel69.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel69.setText("Cancelar");
+
+        javax.swing.GroupLayout EditarMedicoCancelarButtonLayout = new javax.swing.GroupLayout(EditarMedicoCancelarButton);
+        EditarMedicoCancelarButton.setLayout(EditarMedicoCancelarButtonLayout);
+        EditarMedicoCancelarButtonLayout.setHorizontalGroup(
+            EditarMedicoCancelarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoCancelarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel69, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        EditarMedicoCancelarButtonLayout.setVerticalGroup(
+            EditarMedicoCancelarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoCancelarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel69, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        EditarMedicoConsultoriosMedicosContenedor.setBackground(new java.awt.Color(255, 255, 255));
+
+        EditarMedicoConsultoriosMedicosGuardarButton.setBackground(new java.awt.Color(0, 204, 153));
+        EditarMedicoConsultoriosMedicosGuardarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosGuardarButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosGuardarButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosGuardarButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel67.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel67.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel67.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel67.setText("Guardar");
+
+        javax.swing.GroupLayout EditarMedicoConsultoriosMedicosGuardarButtonLayout = new javax.swing.GroupLayout(EditarMedicoConsultoriosMedicosGuardarButton);
+        EditarMedicoConsultoriosMedicosGuardarButton.setLayout(EditarMedicoConsultoriosMedicosGuardarButtonLayout);
+        EditarMedicoConsultoriosMedicosGuardarButtonLayout.setHorizontalGroup(
+            EditarMedicoConsultoriosMedicosGuardarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoConsultoriosMedicosGuardarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel67, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        EditarMedicoConsultoriosMedicosGuardarButtonLayout.setVerticalGroup(
+            EditarMedicoConsultoriosMedicosGuardarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoConsultoriosMedicosGuardarButtonLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel67)
+                .addContainerGap())
+        );
+
+        EditarMedicoConsultoriosMedicosBorrarButton.setBackground(new java.awt.Color(204, 204, 204));
+        EditarMedicoConsultoriosMedicosBorrarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosBorrarButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosBorrarButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosBorrarButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel66.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel66.setText("Borrar");
+
+        javax.swing.GroupLayout EditarMedicoConsultoriosMedicosBorrarButtonLayout = new javax.swing.GroupLayout(EditarMedicoConsultoriosMedicosBorrarButton);
+        EditarMedicoConsultoriosMedicosBorrarButton.setLayout(EditarMedicoConsultoriosMedicosBorrarButtonLayout);
+        EditarMedicoConsultoriosMedicosBorrarButtonLayout.setHorizontalGroup(
+            EditarMedicoConsultoriosMedicosBorrarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoConsultoriosMedicosBorrarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel66, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        EditarMedicoConsultoriosMedicosBorrarButtonLayout.setVerticalGroup(
+            EditarMedicoConsultoriosMedicosBorrarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoConsultoriosMedicosBorrarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel66)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        EditarMedicoConsultoriosMedicosPanel.setBackground(new java.awt.Color(204, 204, 204));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel48.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel48.setText("Lunes");
+
+        LunesConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        LunesConsultoriosMedicos.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        LunesConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        LunesConsultoriosMedicos.setBorder(null);
+
+        jLabel54.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel54.setText("Entrada");
+
+        LunesEntradaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        LunesEntradaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        LunesEntradaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        LunesEntradaConsultoriosMedicos.setBorder(null);
+
+        LunesSalidaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        LunesSalidaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        LunesSalidaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        LunesSalidaConsultoriosMedicos.setBorder(null);
+
+        jLabel60.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel60.setText("Salida");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LunesConsultoriosMedicos)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel54)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(LunesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel60)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LunesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel48)
+                .addGap(18, 18, 18)
+                .addComponent(LunesConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel54)
+                    .addComponent(LunesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LunesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel60))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel49.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel49.setText("Martes");
+
+        MartesConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        MartesConsultoriosMedicos.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        MartesConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        MartesConsultoriosMedicos.setBorder(null);
+
+        jLabel55.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel55.setText("Entrada");
+
+        MartesEntradaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        MartesEntradaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        MartesEntradaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        MartesEntradaConsultoriosMedicos.setBorder(null);
+
+        MartesSalidaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        MartesSalidaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        MartesSalidaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        MartesSalidaConsultoriosMedicos.setBorder(null);
+
+        jLabel61.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel61.setText("Salida");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MartesConsultoriosMedicos)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(MartesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel61)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MartesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel49)
+                .addGap(18, 18, 18)
+                .addComponent(MartesConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel55)
+                    .addComponent(MartesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MartesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel61))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel50.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel50.setText("Miércoles");
+
+        MiercolesConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        MiercolesConsultoriosMedicos.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        MiercolesConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        MiercolesConsultoriosMedicos.setBorder(null);
+
+        jLabel56.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel56.setText("Entrada");
+
+        MiercolesEntradaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        MiercolesEntradaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        MiercolesEntradaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        MiercolesEntradaConsultoriosMedicos.setBorder(null);
+
+        MiercolesSalidaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        MiercolesSalidaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        MiercolesSalidaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        MiercolesSalidaConsultoriosMedicos.setBorder(null);
+
+        jLabel62.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel62.setText("Salida");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(MiercolesConsultoriosMedicos))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel56)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(MiercolesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel62)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MiercolesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel50)
+                .addGap(18, 18, 18)
+                .addComponent(MiercolesConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel56)
+                    .addComponent(MiercolesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MiercolesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel62))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel51.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel51.setText("Jueves");
+
+        JuevesConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        JuevesConsultoriosMedicos.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        JuevesConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        JuevesConsultoriosMedicos.setBorder(null);
+
+        jLabel57.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel57.setText("Entrada");
+
+        JuevesEntradaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        JuevesEntradaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        JuevesEntradaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        JuevesEntradaConsultoriosMedicos.setBorder(null);
+
+        JuevesSalidaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        JuevesSalidaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        JuevesSalidaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        JuevesSalidaConsultoriosMedicos.setBorder(null);
+
+        jLabel63.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel63.setText("Salida");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JuevesConsultoriosMedicos)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel57)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(JuevesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel63)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JuevesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel51)
+                .addGap(18, 18, 18)
+                .addComponent(JuevesConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel57)
+                    .addComponent(JuevesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JuevesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel63))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel53.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel53.setText("Sábado");
+
+        SabadoConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        SabadoConsultoriosMedicos.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        SabadoConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        SabadoConsultoriosMedicos.setBorder(null);
+
+        jLabel59.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel59.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel59.setText("Entrada");
+
+        SabadoEntradaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        SabadoEntradaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        SabadoEntradaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        SabadoEntradaConsultoriosMedicos.setBorder(null);
+
+        SabadoSalidaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        SabadoSalidaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        SabadoSalidaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        SabadoSalidaConsultoriosMedicos.setBorder(null);
+
+        jLabel65.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel65.setText("Salida");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SabadoConsultoriosMedicos)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel59)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(SabadoEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel65)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SabadoSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel53)
+                .addGap(18, 18, 18)
+                .addComponent(SabadoConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel59)
+                    .addComponent(SabadoEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SabadoSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel65))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel52.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel52.setText("Viernes");
+
+        ViernesConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        ViernesConsultoriosMedicos.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        ViernesConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        ViernesConsultoriosMedicos.setBorder(null);
+
+        jLabel58.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel58.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel58.setText("Entrada");
+
+        ViernesEntradaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        ViernesEntradaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        ViernesEntradaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        ViernesEntradaConsultoriosMedicos.setBorder(null);
+
+        ViernesSalidaConsultoriosMedicos.setBackground(new java.awt.Color(204, 204, 204));
+        ViernesSalidaConsultoriosMedicos.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        ViernesSalidaConsultoriosMedicos.setForeground(new java.awt.Color(51, 51, 51));
+        ViernesSalidaConsultoriosMedicos.setBorder(null);
+
+        jLabel64.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel64.setText("Salida");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel52, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ViernesConsultoriosMedicos)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel58)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(ViernesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel64)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ViernesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel52)
+                .addGap(18, 18, 18)
+                .addComponent(ViernesConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel58)
+                    .addComponent(ViernesEntradaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ViernesSalidaConsultoriosMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel64))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout EditarMedicoConsultoriosMedicosPanelLayout = new javax.swing.GroupLayout(EditarMedicoConsultoriosMedicosPanel);
+        EditarMedicoConsultoriosMedicosPanel.setLayout(EditarMedicoConsultoriosMedicosPanelLayout);
+        EditarMedicoConsultoriosMedicosPanelLayout.setHorizontalGroup(
+            EditarMedicoConsultoriosMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoConsultoriosMedicosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        EditarMedicoConsultoriosMedicosPanelLayout.setVerticalGroup(
+            EditarMedicoConsultoriosMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoConsultoriosMedicosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(EditarMedicoConsultoriosMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout EditarMedicoConsultoriosMedicosContenedorLayout = new javax.swing.GroupLayout(EditarMedicoConsultoriosMedicosContenedor);
+        EditarMedicoConsultoriosMedicosContenedor.setLayout(EditarMedicoConsultoriosMedicosContenedorLayout);
+        EditarMedicoConsultoriosMedicosContenedorLayout.setHorizontalGroup(
+            EditarMedicoConsultoriosMedicosContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoConsultoriosMedicosContenedorLayout.createSequentialGroup()
+                .addComponent(EditarMedicoConsultoriosMedicosBorrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(EditarMedicoConsultoriosMedicosGuardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(EditarMedicoConsultoriosMedicosContenedorLayout.createSequentialGroup()
+                .addComponent(EditarMedicoConsultoriosMedicosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        EditarMedicoConsultoriosMedicosContenedorLayout.setVerticalGroup(
+            EditarMedicoConsultoriosMedicosContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoConsultoriosMedicosContenedorLayout.createSequentialGroup()
+                .addComponent(EditarMedicoConsultoriosMedicosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(EditarMedicoConsultoriosMedicosContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoConsultoriosMedicosContenedorLayout.createSequentialGroup()
+                        .addComponent(EditarMedicoConsultoriosMedicosGuardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoConsultoriosMedicosContenedorLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(EditarMedicoConsultoriosMedicosBorrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        EditarMedicoDesactivarButton.setBackground(new java.awt.Color(255, 51, 51));
+        EditarMedicoDesactivarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EditarMedicoDesactivarButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EditarMedicoDesactivarButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditarMedicoDesactivarButtonMouseEntered(evt);
+            }
+        });
+
+        EditarMedicoDesactivarText.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        EditarMedicoDesactivarText.setForeground(new java.awt.Color(255, 255, 255));
+        EditarMedicoDesactivarText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EditarMedicoDesactivarText.setText("Dar de baja");
+
+        javax.swing.GroupLayout EditarMedicoDesactivarButtonLayout = new javax.swing.GroupLayout(EditarMedicoDesactivarButton);
+        EditarMedicoDesactivarButton.setLayout(EditarMedicoDesactivarButtonLayout);
+        EditarMedicoDesactivarButtonLayout.setHorizontalGroup(
+            EditarMedicoDesactivarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoDesactivarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(EditarMedicoDesactivarText, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        EditarMedicoDesactivarButtonLayout.setVerticalGroup(
+            EditarMedicoDesactivarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarMedicoDesactivarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(EditarMedicoDesactivarText, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        EditarMedicoID.setFont(new java.awt.Font("Roboto Light", 1, 16)); // NOI18N
+        EditarMedicoID.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoID.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        EditarMedicoID.setText("44444444");
+
+        EditarMedicoObraSocial.setBackground(new java.awt.Color(255, 255, 255));
+        EditarMedicoObraSocial.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        EditarMedicoObraSocial.setForeground(new java.awt.Color(51, 51, 51));
+        EditarMedicoObraSocial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna", "Hospital Italiano", "Galeno", "OSDEPYM", "Swiss Medical", "OSCHOCA", "Obra Social de Personal Doméstico", "Jerárquicos Salud", "Unión Personal", "Carniceria Dock Sud", "FEMEBA" }));
+        EditarMedicoObraSocial.setBorder(null);
+
+        javax.swing.GroupLayout EditarMedicoPanelLayout = new javax.swing.GroupLayout(EditarMedicoPanel);
+        EditarMedicoPanel.setLayout(EditarMedicoPanelLayout);
+        EditarMedicoPanelLayout.setHorizontalGroup(
+            EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EditarMedicoConsultoriosMedicosTitle)
+                    .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, EditarMedicoPanelLayout.createSequentialGroup()
+                            .addComponent(EditarMedicoTitle)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EditarMedicoID, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                            .addComponent(EditarMedicoCancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EditarMedicoDesactivarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(EditarMedicoConsultoriosMedicosContenedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, EditarMedicoPanelLayout.createSequentialGroup()
+                            .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel39)
+                                .addComponent(jLabel40)
+                                .addComponent(jLabel41)
+                                .addComponent(jLabel42)
+                                .addComponent(jLabel38))
+                            .addGap(18, 18, 18)
+                            .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(EditarMedicoDNI)
+                                .addComponent(jSeparator18)
+                                .addComponent(EditarMedicoHonorarios)
+                                .addComponent(jSeparator17)
+                                .addComponent(EditarMedicoApellido)
+                                .addComponent(jSeparator16)
+                                .addComponent(EditarMedicoNombre)
+                                .addComponent(jSeparator15)
+                                .addComponent(jSeparator14)
+                                .addComponent(EditarMedicoObraSocial, 0, 240, Short.MAX_VALUE))
+                            .addGap(71, 71, 71)
+                            .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                                    .addComponent(jLabel44)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(EditarMedicoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                                    .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(EditarMedicoBorrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel43))
+                                    .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jSeparator20)
+                                                .addComponent(jSeparator19)
+                                                .addComponent(EditarMedicoRepetirPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
+                                        .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                                            .addGap(96, 96, 96)
+                                            .addComponent(EditarMedicoGuardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(EditarMedicoConfirmacionPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+        EditarMedicoPanelLayout.setVerticalGroup(
+            EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EditarMedicoTitle)
+                    .addComponent(EditarMedicoID))
+                .addGap(43, 43, 43)
+                .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(EditarMedicoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel44)
+                    .addComponent(EditarMedicoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EditarMedicoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel39)
+                            .addComponent(jLabel43)
+                            .addComponent(EditarMedicoRepetirPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EditarMedicoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                                .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel41)
+                                    .addComponent(EditarMedicoObraSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                                        .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(EditarMedicoHonorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel42))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(EditarMedicoGuardarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EditarMedicoBorrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(46, 46, 46)
+                                .addComponent(EditarMedicoConsultoriosMedicosTitle))
+                            .addComponent(EditarMedicoConfirmacionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EditarMedicoConsultoriosMedicosContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                        .addComponent(EditarMedicoCancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EditarMedicoDesactivarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
+        );
+
+        ContentLayeredPane.add(EditarMedicoPanel, "card7");
+
         AdministrarMedicosPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel34.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
@@ -595,6 +1659,17 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
 
         AdministrarMedicosSearchButton.setBackground(new java.awt.Color(204, 204, 204));
         AdministrarMedicosSearchButton.setPreferredSize(new java.awt.Dimension(82, 34));
+        AdministrarMedicosSearchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AdministrarMedicosSearchButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdministrarMedicosSearchButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdministrarMedicosSearchButtonMouseEntered(evt);
+            }
+        });
 
         jLabel36.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(51, 51, 51));
@@ -617,23 +1692,84 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                 .addContainerGap())
         );
 
+        AdministrarMedicosActivoComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        AdministrarMedicosActivoComboBox.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        AdministrarMedicosActivoComboBox.setForeground(new java.awt.Color(51, 51, 51));
+        AdministrarMedicosActivoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activos", "Inactivos" }));
+        AdministrarMedicosActivoComboBox.setBorder(null);
+        AdministrarMedicosActivoComboBox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdministrarMedicosActivoComboBoxMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdministrarMedicosActivoComboBoxMouseEntered(evt);
+            }
+        });
+        AdministrarMedicosActivoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdministrarMedicosActivoComboBoxActionPerformed(evt);
+            }
+        });
+
+        AdministrarMedicoAgregarButton.setBackground(new java.awt.Color(0, 204, 153));
+        AdministrarMedicoAgregarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AdministrarMedicoAgregarButtonMousePressed(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdministrarMedicoAgregarButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdministrarMedicoAgregarButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel37.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setText("Agregar médico");
+
+        javax.swing.GroupLayout AdministrarMedicoAgregarButtonLayout = new javax.swing.GroupLayout(AdministrarMedicoAgregarButton);
+        AdministrarMedicoAgregarButton.setLayout(AdministrarMedicoAgregarButtonLayout);
+        AdministrarMedicoAgregarButtonLayout.setHorizontalGroup(
+            AdministrarMedicoAgregarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdministrarMedicoAgregarButtonLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel37)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        AdministrarMedicoAgregarButtonLayout.setVerticalGroup(
+            AdministrarMedicoAgregarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdministrarMedicoAgregarButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout AdministrarMedicosPanelLayout = new javax.swing.GroupLayout(AdministrarMedicosPanel);
         AdministrarMedicosPanel.setLayout(AdministrarMedicosPanelLayout);
         AdministrarMedicosPanelLayout.setHorizontalGroup(
             AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addGap(22, 22, 22)
-                        .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator12)
-                            .addComponent(AdministrarMedicosSearchTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
-                        .addGap(38, 38, 38)
-                        .addComponent(AdministrarMedicosSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel34)
-                    .addComponent(AdministrarMedicosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(AdministrarMedicosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
+                            .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
+                                    .addComponent(jLabel35)
+                                    .addGap(22, 22, 22)
+                                    .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jSeparator12)
+                                        .addComponent(AdministrarMedicosSearchTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                                    .addGap(38, 38, 38)
+                                    .addComponent(AdministrarMedicosSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel34))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jSeparator13)
+                                .addComponent(AdministrarMedicosActivoComboBox, 0, 160, Short.MAX_VALUE))))
+                    .addComponent(AdministrarMedicoAgregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         AdministrarMedicosPanelLayout.setVerticalGroup(
@@ -641,18 +1777,28 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
             .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel34)
-                .addGap(41, 41, 41)
                 .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AdministrarMedicosSearchTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel35))
+                            .addGroup(AdministrarMedicosPanelLayout.createSequentialGroup()
+                                .addGroup(AdministrarMedicosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(AdministrarMedicosSearchTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel35))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(AdministrarMedicosSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdministrarMedicosPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(AdministrarMedicosSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                        .addComponent(AdministrarMedicosActivoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)))
                 .addComponent(AdministrarMedicosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AdministrarMedicoAgregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         ContentLayeredPane.add(AdministrarMedicosPanel, "card6");
@@ -2238,6 +3384,341 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         // TODO add your handling code here:
     }//GEN-LAST:event_AdministrarMedicosSearchTextfieldActionPerformed
 
+    private void AdministrarPacientesMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarPacientesMenuMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_AdministrarPacientesMenuMouseEntered
+
+    private void AdministrarMedicosMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicosMenuMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_AdministrarMedicosMenuMouseEntered
+
+    private void ReportesMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportesMenuMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_ReportesMenuMouseEntered
+
+    private void ReportesMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportesMenuMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_ReportesMenuMouseExited
+
+    private void AdministrarMedicosMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicosMenuMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_AdministrarMedicosMenuMouseExited
+
+    private void AdministrarPacientesMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarPacientesMenuMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_AdministrarPacientesMenuMouseExited
+
+    private void AdministrarMedicosMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicosMenuMousePressed
+        switchLayeredPane(ContentLayeredPane, AdministrarMedicosPanel);
+    }//GEN-LAST:event_AdministrarMedicosMenuMousePressed
+
+    private void AdminPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminPanelMousePressed
+        setCursor(NORMAL);
+        switchLayeredPane(MainLayeredPane, DashboardPanel);
+        switchLayeredPane(CenterLeftMenuLayeredPane, CenterLeftMenuAdmin);
+        switchLayeredPane(ContentLayeredPane, AdministrarMedicosPanel);
+        Username.setText("Administrador");
+        populateAdministrarMedicos(1);
+        AdministrarMedicosActivoComboBox.setSelectedIndex(0);
+    }//GEN-LAST:event_AdminPanelMousePressed
+
+    private void AdministrarMedicosSearchButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicosSearchButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_AdministrarMedicosSearchButtonMouseEntered
+
+    private void AdministrarMedicosSearchButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicosSearchButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_AdministrarMedicosSearchButtonMouseExited
+
+    private void AdministrarMedicosSearchButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicosSearchButtonMousePressed
+        populateAdministrarMedicos(1, (String) AdministrarMedicosSearchTextfield.getText());
+        AdministrarMedicosActivoComboBox.setSelectedIndex(0);
+    }//GEN-LAST:event_AdministrarMedicosSearchButtonMousePressed
+
+    private void AdministrarMedicosActivoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministrarMedicosActivoComboBoxActionPerformed
+        String activoComboBox = AdministrarMedicosActivoComboBox.getSelectedItem().toString();
+        if (activoComboBox.equals("Activos")){
+            if (AdministrarMedicosSearchTextfield.getText().equals("")){
+                populateAdministrarMedicos(1);
+            }
+            else{
+                populateAdministrarMedicos(1, (String) AdministrarMedicosSearchTextfield.getText());
+            }
+        }
+        if (activoComboBox.equals("Inactivos")){
+            if (AdministrarMedicosSearchTextfield.getText().equals("")){
+                populateAdministrarMedicos(0);
+            }
+            else{
+                populateAdministrarMedicos(0, (String) AdministrarMedicosSearchTextfield.getText());
+            }
+        }
+    }//GEN-LAST:event_AdministrarMedicosActivoComboBoxActionPerformed
+
+    private void AdministrarMedicosActivoComboBoxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicosActivoComboBoxMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_AdministrarMedicosActivoComboBoxMouseEntered
+
+    private void AdministrarMedicosActivoComboBoxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicosActivoComboBoxMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_AdministrarMedicosActivoComboBoxMouseExited
+
+    private void AdministrarMedicoAgregarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicoAgregarButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_AdministrarMedicoAgregarButtonMouseEntered
+
+    private void AdministrarMedicoAgregarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicoAgregarButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_AdministrarMedicoAgregarButtonMouseExited
+
+    private void AdministrarMedicoAgregarButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdministrarMedicoAgregarButtonMousePressed
+        resetEditarMedico();
+        setCursor(NORMAL);
+        switchLayeredPane(ContentLayeredPane, EditarMedicoPanel);
+    }//GEN-LAST:event_AdministrarMedicoAgregarButtonMousePressed
+
+    private void EditarMedicoConsultoriosMedicosTitleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoConsultoriosMedicosTitleMousePressed
+        int dni = Integer.parseInt(EditarMedicoID.getText());
+        ArrayList<ConsultorioMedico> consultoriosMedicos = searchAllConsultoriosMedicosByDNI(dni);
+        for(ConsultorioMedico consultorioMedico : consultoriosMedicos){
+            setEditarConsultoriosMedicos(consultorioMedico);
+        }
+        EditarMedicoConsultoriosMedicosContenedor.setVisible(true);
+        
+    }//GEN-LAST:event_EditarMedicoConsultoriosMedicosTitleMousePressed
+
+    private void EditarMedicoDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EditarMedicoDNIKeyPressed
+        onlyDigits(evt);
+    }//GEN-LAST:event_EditarMedicoDNIKeyPressed
+
+    private void EditarMedicoHonorariosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EditarMedicoHonorariosKeyPressed
+        onlyDigits(evt);
+    }//GEN-LAST:event_EditarMedicoHonorariosKeyPressed
+
+    private void EditarMedicoPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EditarMedicoPasswordKeyPressed
+        onlyLettersOrDigits(evt);
+    }//GEN-LAST:event_EditarMedicoPasswordKeyPressed
+
+    private void EditarMedicoRepetirPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EditarMedicoRepetirPasswordKeyPressed
+        onlyLettersOrDigits(evt);
+    }//GEN-LAST:event_EditarMedicoRepetirPasswordKeyPressed
+
+    private void EditarMedicoBorrarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoBorrarButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_EditarMedicoBorrarButtonMouseEntered
+
+    private void EditarMedicoBorrarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoBorrarButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_EditarMedicoBorrarButtonMouseExited
+
+    private void EditarMedicoBorrarButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoBorrarButtonMousePressed
+        clearEditarMedico();
+    }//GEN-LAST:event_EditarMedicoBorrarButtonMousePressed
+
+    private void EditarMedicoGuardarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoGuardarButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_EditarMedicoGuardarButtonMouseEntered
+
+    private void EditarMedicoGuardarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoGuardarButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_EditarMedicoGuardarButtonMouseExited
+
+    private void EditarMedicoGuardarButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoGuardarButtonMousePressed
+        setCursor(NORMAL);
+        
+        int validationResult = validateEditarMedico();
+        
+        int dni = Integer.parseInt(EditarMedicoDNI.getText());
+        String nombre = EditarMedicoNombre.getText();
+        String apellido = EditarMedicoApellido.getText();
+        String obraSocial = EditarMedicoObraSocial.getSelectedItem().toString();
+        int honorarios = Integer.parseInt(EditarMedicoHonorarios.getText());
+        String password = EditarMedicoPassword.getText();
+
+        Medico medico = new Medico();
+        medico.setDNI(dni);
+        medico.setNombre(nombre);
+        medico.setApellido(apellido);
+        if (!obraSocial.equals("")){
+            medico.setObrasocial(obraSocial);
+        }
+        medico.setHonorarios(honorarios);
+        medico.setPassword(password);
+        
+        if (validationResult == 1){
+            Medico medicoTest = null;
+            if (EditarMedicoTitle.getText().equals("Agregar médico")){
+                try{
+                    medicoTest = serviceMedico.search(dni);
+                }catch(ServiceException exception){
+                    
+                }finally{
+                    if (medicoTest == null){
+                        JOptionPane.showMessageDialog(null, "Ya existe un médico con el DNI ingresado", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                    }
+                    else{
+                        try{
+                            serviceMedico.create(medico);
+                            
+                            final Medico medicoTimer = medico;
+                            final Timer[] timer3 = new Timer[1];
+                            timer3[0] = new Timer(2000, e -> {
+                                EditarMedicoConfirmacionPanel.setVisible(false);
+                                setEditarMedico(medicoTimer, 1);
+                                timer3[0].stop();
+                            });
+
+                            EditarMedicoConfirmacionPanel.setVisible(true);
+                            EditarMedicoBorrarButton.setVisible(false);
+                            EditarMedicoGuardarButton.setVisible(false);
+                            timer3[0].start();
+                        }catch(ServiceException exception){
+                            JOptionPane.showMessageDialog(null, "Ocurrió un error en el servidor", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+            }
+            else{
+                try{
+                    serviceMedico.update(medico, Integer.parseInt(EditarMedicoID.getText()));
+                    
+                    final Medico medicoTimer = medico;
+                    final Timer[] timer4 = new Timer[1];
+                    timer4[0] = new Timer(2000, e -> {
+                        EditarMedicoConfirmacionPanel.setVisible(false);
+                        switchLayeredPane(ContentLayeredPane, AdministrarMedicosPanel);
+                        populateAdministrarMedicos(1);
+                        AdministrarMedicosActivoComboBox.setSelectedIndex(0);
+                        resetEditarMedico();
+                        timer4[0].stop();
+                    });
+
+                    EditarMedicoConfirmacionPanel.setVisible(true);
+                    EditarMedicoBorrarButton.setVisible(false);
+                    EditarMedicoGuardarButton.setVisible(false);
+                    timer4[0].start();
+                }catch(ServiceException exception){
+                    JOptionPane.showMessageDialog(null, "Ocurrió un error en el servidor", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+        if(validationResult == 2){
+            JOptionPane.showMessageDialog(null, "Las contraseñas deben coincidir", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Complete todos los campos corréctamente", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_EditarMedicoGuardarButtonMousePressed
+
+    private void EditarMedicoConsultoriosMedicosTitleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoConsultoriosMedicosTitleMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_EditarMedicoConsultoriosMedicosTitleMouseEntered
+
+    private void EditarMedicoConsultoriosMedicosTitleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoConsultoriosMedicosTitleMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_EditarMedicoConsultoriosMedicosTitleMouseExited
+
+    private void EditarMedicoConsultoriosMedicosBorrarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoConsultoriosMedicosBorrarButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_EditarMedicoConsultoriosMedicosBorrarButtonMouseEntered
+
+    private void EditarMedicoConsultoriosMedicosBorrarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoConsultoriosMedicosBorrarButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_EditarMedicoConsultoriosMedicosBorrarButtonMouseExited
+
+    private void EditarMedicoConsultoriosMedicosBorrarButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoConsultoriosMedicosBorrarButtonMousePressed
+        resetEditarConsultoriosMedicos();
+    }//GEN-LAST:event_EditarMedicoConsultoriosMedicosBorrarButtonMousePressed
+
+    private void EditarMedicoConsultoriosMedicosGuardarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoConsultoriosMedicosGuardarButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_EditarMedicoConsultoriosMedicosGuardarButtonMouseEntered
+
+    private void EditarMedicoConsultoriosMedicosGuardarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoConsultoriosMedicosGuardarButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_EditarMedicoConsultoriosMedicosGuardarButtonMouseExited
+
+    private void EditarMedicoConsultoriosMedicosGuardarButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoConsultoriosMedicosGuardarButtonMousePressed
+        int validationResult = validateEditarConsultoriosMedicos();
+        if (validationResult == 6){
+            try{
+                int dni = Integer.parseInt(EditarMedicoID.getText());
+                serviceConsultorioMedico.deleteByMedico(dni);
+                try{
+                    serviceConsulta.deleteMissmatches(dni);
+                    setCursor(NORMAL);
+                    resetEditarConsultoriosMedicos();
+                    switchLayeredPane(ContentLayeredPane, AdministrarMedicosPanel);
+                    populateAdministrarMedicos(1);
+                    AdministrarMedicosActivoComboBox.setSelectedIndex(0);
+                }catch(ServiceException exception){
+                    JOptionPane.showMessageDialog(null, "Ocurrió un error en el servidor", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }catch(ServiceException exception){
+                JOptionPane.showMessageDialog(null, "No se pudieron guardar los cambios", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_EditarMedicoConsultoriosMedicosGuardarButtonMousePressed
+
+    private void EditarMedicoCancelarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoCancelarButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_EditarMedicoCancelarButtonMouseEntered
+
+    private void EditarMedicoCancelarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoCancelarButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_EditarMedicoCancelarButtonMouseExited
+
+    private void EditarMedicoCancelarButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoCancelarButtonMousePressed
+        setCursor(NORMAL);
+        resetEditarMedico();
+        switchLayeredPane(ContentLayeredPane, AdministrarMedicosPanel);
+        populateAdministrarMedicos(1);
+        AdministrarMedicosActivoComboBox.setSelectedIndex(0);
+    }//GEN-LAST:event_EditarMedicoCancelarButtonMousePressed
+
+    private void EditarMedicoDesactivarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoDesactivarButtonMouseEntered
+        setCursor(HAND_CURSOR);
+    }//GEN-LAST:event_EditarMedicoDesactivarButtonMouseEntered
+
+    private void EditarMedicoDesactivarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoDesactivarButtonMouseExited
+        setCursor(NORMAL);
+    }//GEN-LAST:event_EditarMedicoDesactivarButtonMouseExited
+
+    private void EditarMedicoDesactivarButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarMedicoDesactivarButtonMousePressed
+        setCursor(NORMAL);
+        int dni = Integer.parseInt(EditarMedicoID.getText());
+        if (EditarMedicoDesactivarText.getText().equals("Dar de alta")){
+            try{
+                serviceMedico.manageActivation(1, dni);
+                resetEditarMedico();
+                switchLayeredPane(ContentLayeredPane, AdministrarMedicosPanel);
+                populateAdministrarMedicos(1);
+                AdministrarMedicosActivoComboBox.setSelectedIndex(0);
+            }catch(ServiceException exception){
+                JOptionPane.showMessageDialog(null, "No se pudo dar de alta", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            try{
+                serviceMedico.manageActivation(0, dni);
+                try{
+                    serviceConsulta.deleteByMedico(dni);
+                    
+                    resetEditarMedico();
+                    switchLayeredPane(ContentLayeredPane, AdministrarMedicosPanel);
+                    populateAdministrarMedicos(1);
+                    AdministrarMedicosActivoComboBox.setSelectedIndex(0);
+                }catch(ServiceException exception){
+                    JOptionPane.showMessageDialog(null, "No se pudo dar de baja", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+            }catch(ServiceException exception){
+                JOptionPane.showMessageDialog(null, "No se pudo dar de baja", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_EditarMedicoDesactivarButtonMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -2275,6 +3756,8 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AdminPanel;
+    private javax.swing.JPanel AdministrarMedicoAgregarButton;
+    private javax.swing.JComboBox<String> AdministrarMedicosActivoComboBox;
     private javax.swing.JPanel AdministrarMedicosContenedor;
     private javax.swing.JLabel AdministrarMedicosMenu;
     private javax.swing.JPanel AdministrarMedicosPanel;
@@ -2293,6 +3776,27 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private javax.swing.JComboBox<String> ConsultorioComboBoxReservarTurno;
     private javax.swing.JLayeredPane ContentLayeredPane;
     private javax.swing.JPanel DashboardPanel;
+    private javax.swing.JTextField EditarMedicoApellido;
+    private javax.swing.JPanel EditarMedicoBorrarButton;
+    private javax.swing.JPanel EditarMedicoCancelarButton;
+    private javax.swing.JPanel EditarMedicoConfirmacionPanel;
+    private javax.swing.JPanel EditarMedicoConsultoriosMedicosBorrarButton;
+    private javax.swing.JPanel EditarMedicoConsultoriosMedicosContenedor;
+    private javax.swing.JPanel EditarMedicoConsultoriosMedicosGuardarButton;
+    private javax.swing.JPanel EditarMedicoConsultoriosMedicosPanel;
+    private javax.swing.JLabel EditarMedicoConsultoriosMedicosTitle;
+    private javax.swing.JTextField EditarMedicoDNI;
+    private javax.swing.JPanel EditarMedicoDesactivarButton;
+    private javax.swing.JLabel EditarMedicoDesactivarText;
+    private javax.swing.JPanel EditarMedicoGuardarButton;
+    private javax.swing.JTextField EditarMedicoHonorarios;
+    private javax.swing.JLabel EditarMedicoID;
+    private javax.swing.JTextField EditarMedicoNombre;
+    private javax.swing.JComboBox<String> EditarMedicoObraSocial;
+    private javax.swing.JPanel EditarMedicoPanel;
+    private javax.swing.JPasswordField EditarMedicoPassword;
+    private javax.swing.JPasswordField EditarMedicoRepetirPassword;
+    private javax.swing.JLabel EditarMedicoTitle;
     private javax.swing.JPanel HistorialTurnosContenedor;
     private javax.swing.JLabel HistorialTurnosMenu;
     private javax.swing.JPanel HistorialTurnosPanel;
@@ -2302,14 +3806,26 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private javax.swing.JPanel InitContenedorPanel;
     private javax.swing.JLayeredPane InitLayeredPane;
     private javax.swing.JPanel InitPanel;
+    private javax.swing.JTextField JuevesConsultoriosMedicos;
+    private javax.swing.JTextField JuevesEntradaConsultoriosMedicos;
+    private javax.swing.JTextField JuevesSalidaConsultoriosMedicos;
     private javax.swing.JPanel LeftLoginPanel;
     private javax.swing.JPanel LeftMenu;
     private javax.swing.JPanel LoginForm;
     private javax.swing.JPanel LoginPanel;
     private javax.swing.JLayeredPane LoginRegisterLayeredPanel;
+    private javax.swing.JTextField LunesConsultoriosMedicos;
+    private javax.swing.JTextField LunesEntradaConsultoriosMedicos;
+    private javax.swing.JTextField LunesSalidaConsultoriosMedicos;
     private javax.swing.JLayeredPane MainLayeredPane;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JTextField MartesConsultoriosMedicos;
+    private javax.swing.JTextField MartesEntradaConsultoriosMedicos;
+    private javax.swing.JTextField MartesSalidaConsultoriosMedicos;
     private javax.swing.JComboBox<Medico> MedicoComboBoxReservarTurno;
+    private javax.swing.JTextField MiercolesConsultoriosMedicos;
+    private javax.swing.JTextField MiercolesEntradaConsultoriosMedicos;
+    private javax.swing.JTextField MiercolesSalidaConsultoriosMedicos;
     private javax.swing.JSeparator NacimientoPacienteSeparator;
     private javax.swing.JPanel PacientePanel;
     private javax.swing.JPasswordField PasswordLogin;
@@ -2345,6 +3861,9 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private javax.swing.JPanel ReservarTurnoPanel;
     private javax.swing.JPanel RightLoginPanel;
     private javax.swing.JPanel RightRegisterPanel;
+    private javax.swing.JTextField SabadoConsultoriosMedicos;
+    private javax.swing.JTextField SabadoEntradaConsultoriosMedicos;
+    private javax.swing.JTextField SabadoSalidaConsultoriosMedicos;
     private javax.swing.JLabel Salir;
     private javax.swing.JPanel SearchMedicoButtonReservarTurno;
     private javax.swing.JTextField SearchMedicoReservarTurno;
@@ -2354,6 +3873,9 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private javax.swing.JPanel TurnosDisponiblesContenedorReservarTurno;
     private javax.swing.JScrollPane TurnosDisponiblesReservarTurno;
     private javax.swing.JLabel Username;
+    private javax.swing.JTextField ViernesConsultoriosMedicos;
+    private javax.swing.JTextField ViernesEntradaConsultoriosMedicos;
+    private javax.swing.JTextField ViernesSalidaConsultoriosMedicos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2384,17 +3906,63 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JSeparator jSeparator17;
+    private javax.swing.JSeparator jSeparator18;
+    private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
@@ -2502,11 +4070,11 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         }
     }
     
-    private ArrayList<Medico> searchAllMedicos(){
+    private ArrayList<Medico> searchAllMedicos(int activo){
         ServiceMedico serviceMedico = new ServiceMedico();
         ArrayList<Medico> medicos = null;
         try{
-            medicos = serviceMedico.searchAll(1);
+            medicos = serviceMedico.searchAll(activo);
         }
         catch(ServiceException exception){
             JOptionPane.showMessageDialog(null, "No se pudieron encontrar resultados", "Error", JOptionPane.ERROR_MESSAGE);
@@ -2514,11 +4082,11 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         return medicos;
     }
     
-    private ArrayList<Medico> searchAllMedicosByApellido(String apellido){
+    private ArrayList<Medico> searchAllMedicosByApellido(String apellido, int activo){
         ServiceMedico serviceMedico = new ServiceMedico();
         ArrayList<Medico> medicos = null;
         try{
-            medicos = serviceMedico.searchAllByApellido(1, apellido);
+            medicos = serviceMedico.searchAllByApellido(activo, apellido);
         }
         catch(ServiceException exception){
             JOptionPane.showMessageDialog(null, "No se pudieron encontrar resultados", "Error", JOptionPane.ERROR_MESSAGE);
@@ -2541,7 +4109,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         ServiceConsulta serviceConsulta = new ServiceConsulta();
         ArrayList<Consulta> consultas = null;
         try{
-            consultas = serviceConsulta.serchAllByMedico(dni, status);
+            consultas = serviceConsulta.searchAllByMedico(dni, status);
         }catch(ServiceException exception){
             JOptionPane.showMessageDialog(null, "Error en el servidor", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -2552,7 +4120,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         ServiceConsulta serviceConsulta = new ServiceConsulta();
         ArrayList<Consulta> consultas = null;
         try{
-            consultas = serviceConsulta.serchAllByPaciente(dni, status);
+            consultas = serviceConsulta.searchAllByPaciente(dni, status);
         }catch(ServiceException exception){
             JOptionPane.showMessageDialog(null, "No se pudieron cargar las consultas", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -2570,7 +4138,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     private void populateMedicoComboBox(String... apellido){
         MedicoComboBoxReservarTurno.removeAllItems();
         System.out.println("Flag 8");
-        ArrayList<Medico> medicos = (apellido.length > 0) ? searchAllMedicosByApellido(apellido[0]) : searchAllMedicos();
+        ArrayList<Medico> medicos = (apellido.length > 0) ? searchAllMedicosByApellido(apellido[0], 1) : searchAllMedicos(1);
         System.out.println("Flag 9");
         if ( (!medicos.isEmpty()) && (medicos != null) ){
             for (Medico medico : medicos){
@@ -2750,18 +4318,279 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         ProximosTurnosMedicoFechaComboBox.addItem("Fechas posteriores");
     }
     
+    public void populateAdministrarMedicos(int activo, String... apellido){
+        ArrayList<Medico> medicos = new ArrayList<>();
+        if (apellido.length > 0){
+            medicos = searchAllMedicosByApellido(apellido[0], activo);
+        }
+        else{
+            medicos = searchAllMedicos(activo);
+        }
+        AdministrarMedicosContenedor.removeAll();
+        for (Medico medico : medicos){
+            MedicoInfoPanel panel = new MedicoInfoPanel(medico, "paciente");
+            panel.setPanelEventListener(this);
+            panel.addMouseListener(".");
+            AdministrarMedicosContenedor.add(Box.createVerticalStrut(2));
+            AdministrarMedicosContenedor.add(panel);
+        }
+        if (medicos.size() > 0){
+            int height = medicos.size() * 74;
+            AdministrarMedicosContenedor.setPreferredSize(new Dimension(895, height));
+        }
+        else{
+            AdministrarMedicosContenedor.setPreferredSize(new Dimension(895, 450));
+        }
+        AdministrarMedicosContenedor.revalidate();
+    }
+    
+    public void resetEditarMedico(){
+        EditarMedicoConfirmacionPanel.setVisible(false);
+        EditarMedicoConsultoriosMedicosTitle.setVisible(false);
+        EditarMedicoConsultoriosMedicosContenedor.setVisible(false);
+        EditarMedicoTitle.setText("Agregar médico");
+        EditarMedicoDesactivarText.setText("Dar de baja");
+        EditarMedicoID.setVisible(false);
+        EditarMedicoBorrarButton.setVisible(true);
+        EditarMedicoGuardarButton.setVisible(true);
+        resetEditarConsultoriosMedicos();
+    }
+    
+    public void clearEditarMedico(){
+        EditarMedicoDNI.setText("");
+        EditarMedicoNombre.setText("");
+        EditarMedicoApellido.setText("");
+        EditarMedicoObraSocial.setSelectedIndex(0);
+        EditarMedicoHonorarios.setText("");
+        EditarMedicoPassword.setText("");
+        EditarMedicoRepetirPassword.setText("");
+    }
+    
+    public void setEditarMedico(Medico medico, int activo){
+        EditarMedicoTitle.setText("Editar médico");
+        EditarMedicoConsultoriosMedicosTitle.setVisible(true);
+        EditarMedicoConsultoriosMedicosContenedor.setVisible(true);
+        EditarMedicoBorrarButton.setVisible(true);
+        EditarMedicoGuardarButton.setVisible(true);
+        if (activo == 1){
+            EditarMedicoDesactivarText.setText("Dar de baja");
+        }
+        else{
+            EditarMedicoDesactivarText.setText("Dar de alta");
+        }
+        EditarMedicoID.setVisible(true);
+        EditarMedicoID.setText(String.valueOf(medico.getDNI()));
+        EditarMedicoDNI.setText(String.valueOf(medico.getDNI()));
+        EditarMedicoNombre.setText(medico.getNombre());
+        EditarMedicoApellido.setText(medico.getApellido());
+        EditarMedicoObraSocial.setSelectedItem(medico.getObrasocial());
+        EditarMedicoHonorarios.setText(String.valueOf(medico.getHonorarios()));
+    }
+    
+    public int validateEditarMedico(){
+        String dni = EditarMedicoDNI.getText();
+        String nombre = EditarMedicoNombre.getText();
+        String apellido = EditarMedicoApellido.getText();
+        String honorarios = EditarMedicoHonorarios.getText();
+        String password = EditarMedicoPassword.getText();
+        String repeatPassword = EditarMedicoRepetirPassword.getText();
+        if ((dni != "") && (nombre != "") && (apellido != "") && (honorarios != "") && (Integer.parseInt(honorarios) > 0) && (password != "") && (password).equals(repeatPassword)){
+            return 1;
+        }
+        if (!password.equals(repeatPassword)){
+            return 2;
+        }
+        else{
+            return 3;
+        }
+    }
+    
+    public int validateDiaConsultoriosMedicos(String consultorio, String entrada, String salida){
+        int result = 0;
+        
+        if ( ( consultorio.equals("") && entrada.equals("") && salida.equals("") ) || ( !consultorio.equals("") && !entrada.equals("") && !salida.equals("") ) ){
+            result = 1;
+        }
+        else{
+            result = 2;
+        }
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        try{
+            LocalTime entradaLocalTime = LocalTime.parse(entrada, formatter);
+            result = 1;
+        }catch(DateTimeParseException exception){
+            result = 3;
+        }
+        try{
+            LocalTime salidaLocalTime = LocalTime.parse(salida, formatter);
+            result = 1;
+        }catch(DateTimeParseException exception){
+            result = 3;
+        }
+        return result;
+    }
+    
+    public int validateEditarConsultoriosMedicos(){
+        String lunes = LunesConsultoriosMedicos.getText();
+        String lunesEntrada = LunesEntradaConsultoriosMedicos.getText();
+        String lunesSalida = LunesSalidaConsultoriosMedicos.getText();
+        
+        String martes = MartesConsultoriosMedicos.getText();
+        String martesEntrada = MartesEntradaConsultoriosMedicos.getText();
+        String martesSalida = MartesSalidaConsultoriosMedicos.getText();
+        
+        String miercoles = MiercolesConsultoriosMedicos.getText();
+        String miercolesEntrada = MiercolesEntradaConsultoriosMedicos.getText();
+        String miercolesSalida = MiercolesSalidaConsultoriosMedicos.getText();
+        
+        String jueves = JuevesConsultoriosMedicos.getText();
+        String juevesEntrada = JuevesEntradaConsultoriosMedicos.getText();
+        String juevesSalida = JuevesSalidaConsultoriosMedicos.getText();
+        
+        String viernes = ViernesConsultoriosMedicos.getText();
+        String viernesEntrada = ViernesEntradaConsultoriosMedicos.getText();
+        String viernesSalida = ViernesSalidaConsultoriosMedicos.getText();
+        
+        String sabado = SabadoConsultoriosMedicos.getText();
+        String sabadoEntrada = SabadoEntradaConsultoriosMedicos.getText();
+        String sabadoSalida = SabadoSalidaConsultoriosMedicos.getText();
+        
+        int endResult = 0;
+        
+        int validationResult;
+        validationResult = validateDiaConsultoriosMedicos(lunes, lunesEntrada, lunesSalida);
+        if (validationResult == 1){
+            endResult +=1;
+        }
+        if (validationResult == 2){
+            JOptionPane.showMessageDialog(null, "Complete corréctamente los campos del día Lunes", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        if (validationResult == 3){
+            JOptionPane.showMessageDialog(null, "Formato incorrecto en las horas. Debe ser 'HH:mm', y los minutos '00' o '30'.", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        validationResult = validateDiaConsultoriosMedicos(martes, martesEntrada, martesSalida);
+        if (validationResult == 1){
+            endResult +=1;
+        }
+        if (validationResult == 2){
+            JOptionPane.showMessageDialog(null, "Complete corréctamente los campos del día Martes", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        if (validationResult == 3){
+            JOptionPane.showMessageDialog(null, "Formato incorrecto en las horas. Debe ser 'HH:mm', y los minutos '00' o '30'.", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        validationResult = validateDiaConsultoriosMedicos(miercoles, miercolesEntrada, miercolesSalida);
+        if (validationResult == 1){
+            endResult +=1;
+        }
+        if (validationResult == 2){
+            JOptionPane.showMessageDialog(null, "Complete corréctamente los campos del día Miércoles", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        if (validationResult == 3){
+            JOptionPane.showMessageDialog(null, "Formato incorrecto en las horas. Debe ser 'HH:mm', y los minutos '00' o '30'.", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        validationResult = validateDiaConsultoriosMedicos(jueves, juevesEntrada, juevesSalida);
+        if (validationResult == 1){
+            endResult +=1;
+        }
+        if (validationResult == 2){
+            JOptionPane.showMessageDialog(null, "Complete corréctamente los campos del día Jueves", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        if (validationResult == 3){
+            JOptionPane.showMessageDialog(null, "Formato incorrecto en las horas. Debe ser 'HH:mm', y los minutos '00' o '30'.", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        validationResult = validateDiaConsultoriosMedicos(viernes, viernesEntrada, viernesSalida);
+        if (validationResult == 1){
+            endResult +=1;
+        }
+        if (validationResult == 2){
+            JOptionPane.showMessageDialog(null, "Complete corréctamente los campos del día Viernes", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        if (validationResult == 3){
+            JOptionPane.showMessageDialog(null, "Formato incorrecto en las horas. Debe ser 'HH:mm', y los minutos '00' o '30'.", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        validationResult = validateDiaConsultoriosMedicos(sabado, sabadoEntrada, sabadoSalida);
+        if (validationResult == 1){
+            endResult +=1;
+        }
+        if (validationResult == 2){
+            JOptionPane.showMessageDialog(null, "Complete corréctamente los campos del día Sábado", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        if (validationResult == 3){
+            JOptionPane.showMessageDialog(null, "Formato incorrecto en las horas. Debe ser 'HH:mm', y los minutos '00' o '30'.", "Advertencia", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return endResult;
+    }
+    
+    public void setEditarConsultoriosMedicos(ConsultorioMedico consultorioMedico){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        if (consultorioMedico.getDia().equals("Lunes")){
+                LunesConsultoriosMedicos.setText(consultorioMedico.getConsultorio());
+                LunesEntradaConsultoriosMedicos.setText(consultorioMedico.getEntrada().format(formatter));
+                LunesSalidaConsultoriosMedicos.setText(consultorioMedico.getSalida().format(formatter));
+            }
+            if (consultorioMedico.getDia().equals("Martes")){
+                MartesSalidaConsultoriosMedicos.setText(consultorioMedico.getConsultorio());
+                MartesSalidaConsultoriosMedicos.setText(consultorioMedico.getEntrada().format(formatter));
+                MartesSalidaConsultoriosMedicos.setText(consultorioMedico.getSalida().format(formatter));
+            }
+            if (consultorioMedico.getDia().equals("Miercoles")){
+                MiercolesSalidaConsultoriosMedicos.setText(consultorioMedico.getConsultorio());
+                MiercolesSalidaConsultoriosMedicos.setText(consultorioMedico.getEntrada().format(formatter));
+                MiercolesSalidaConsultoriosMedicos.setText(consultorioMedico.getSalida().format(formatter));
+            }
+            if (consultorioMedico.getDia().equals("Jueves")){
+                JuevesConsultoriosMedicos.setText(consultorioMedico.getConsultorio());
+                JuevesEntradaConsultoriosMedicos.setText(consultorioMedico.getEntrada().format(formatter));
+                JuevesSalidaConsultoriosMedicos.setText(consultorioMedico.getSalida().format(formatter));
+            }
+            if (consultorioMedico.getDia().equals("Viernes")){
+                ViernesSalidaConsultoriosMedicos.setText(consultorioMedico.getConsultorio());
+                ViernesSalidaConsultoriosMedicos.setText(consultorioMedico.getEntrada().format(formatter));
+                ViernesSalidaConsultoriosMedicos.setText(consultorioMedico.getSalida().format(formatter));
+            }
+            if (consultorioMedico.getDia().equals("Sabado")){
+                SabadoSalidaConsultoriosMedicos.setText(consultorioMedico.getConsultorio());
+                SabadoSalidaConsultoriosMedicos.setText(consultorioMedico.getEntrada().format(formatter));
+                SabadoSalidaConsultoriosMedicos.setText(consultorioMedico.getSalida().format(formatter));
+            }
+    }
+    
+    public void resetEditarConsultoriosMedicos(){
+        LunesConsultoriosMedicos.setText("");
+        LunesEntradaConsultoriosMedicos.setText("");
+        LunesSalidaConsultoriosMedicos.setText("");
+        
+        MartesSalidaConsultoriosMedicos.setText("");
+        MartesSalidaConsultoriosMedicos.setText("");
+        MartesSalidaConsultoriosMedicos.setText("");
+        
+        MiercolesConsultoriosMedicos.setText("");
+        MiercolesEntradaConsultoriosMedicos.setText("");
+        MiercolesSalidaConsultoriosMedicos.setText("");
+        
+        JuevesConsultoriosMedicos.setText("");
+        JuevesEntradaConsultoriosMedicos.setText("");
+        JuevesSalidaConsultoriosMedicos.setText("");
+        
+        ViernesConsultoriosMedicos.setText("");
+        ViernesEntradaConsultoriosMedicos.setText("");
+        ViernesSalidaConsultoriosMedicos.setText("");
+        
+        SabadoConsultoriosMedicos.setText("");
+        SabadoEntradaConsultoriosMedicos.setText("");
+        SabadoSalidaConsultoriosMedicos.setText("");
+    }
     
     
-//    private void filterConsultasByConsultorio(String consultorio){
-//        Arra
-//        for (int i = 0; i < TurnosDisponiblesContenedorReservarTurno.getComponentCount(); i++) {
-//            Component componente = TurnosDisponiblesContenedorReservarTurno.getComponent(i);
-//            if (componente instanceof ConsultaInfoPanel) {
-//                ConsultaInfoPanel consultaInfoPanel = (ConsultaInfoPanel) componente;
-//                
-//            }
-//        }
-//    }
+    
+
     
     
     
@@ -2788,6 +4617,20 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         ProximosTurnosCancelarButton.setVisible(true);
         ProximoTurnoAEliminar.add(panelConsultaSelected, BorderLayout.CENTER);
         ProximoTurnoAEliminar.revalidate();
+    }
+    
+    @Override
+    public void onAdministrarMedicosEvent(Medico medico){
+        setCursor(NORMAL);
+        resetEditarMedico();
+        int activo = AdministrarMedicosActivoComboBox.getSelectedIndex();
+        if (activo == 0){
+            setEditarMedico(medico, 1);
+        }
+        else{
+            setEditarMedico(medico, 0);
+        }
+        switchLayeredPane(ContentLayeredPane, EditarMedicoPanel);
     }
     
     @Override
