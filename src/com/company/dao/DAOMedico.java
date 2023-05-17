@@ -159,6 +159,7 @@ public class DAOMedico implements IDAO<Medico>{
                 medico.setHonorarios(resultSet.getInt("HONORARIOS"));
                 medico.setPassword(resultSet.getString("PASSWORD"));
             }
+            return medico;
         }catch (SQLException exception){
             exception.printStackTrace();
             throw new DAOException(exception.getMessage());
@@ -172,7 +173,7 @@ public class DAOMedico implements IDAO<Medico>{
                 throw new DAOException(exception.getMessage());
             }
         }
-        return medico;
+        
     }
     
     public ArrayList<Medico> searchAll(int active) throws DAOException {

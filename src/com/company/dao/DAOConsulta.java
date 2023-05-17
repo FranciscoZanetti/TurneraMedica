@@ -143,7 +143,7 @@ public class DAOConsulta {
         ArrayList<Consulta> consultas = new ArrayList<Consulta>();
         try{
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            preparedStatement = connection.prepareStatement("SELECT * FROM (CONSULTAS INNER JOIN MEDICOS ON CONSULTAS.MEDICO = MEDICOS.DNI) LEFT JOIN PACIENTES ON CONSULTAS.PACIENTE = PACIENTES.DNI WHERE CONSULTAS.FECHA BETWEEN '?' AND '?' AND MEDICOS.DNI = ? AND STATUS = 0 ");
+            preparedStatement = connection.prepareStatement("SELECT * FROM (CONSULTAS INNER JOIN MEDICOS ON CONSULTAS.MEDICO = MEDICOS.DNI) LEFT JOIN PACIENTES ON CONSULTAS.PACIENTE = PACIENTES.DNI WHERE CONSULTAS.FECHA BETWEEN ? AND ? AND MEDICOS.DNI = ? AND STATUS = 0 ");
             System.out.println(preparedStatement);
             preparedStatement.setDate(1, Date.valueOf(start));
             preparedStatement.setDate(2, Date.valueOf(end));
@@ -198,7 +198,7 @@ public class DAOConsulta {
         ArrayList<Consulta> consultas = new ArrayList<Consulta>();
         try{
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            preparedStatement = connection.prepareStatement("SELECT * FROM (CONSULTAS INNER JOIN MEDICOS ON CONSULTAS.MEDICO = MEDICOS.DNI) LEFT JOIN PACIENTES ON CONSULTAS.PACIENTE = PACIENTES.DNI WHERE CONSULTAS.FECHA BETWEEN '?' AND '?' AND MEDICOS.ACTIVO = ? AND STATUS = 0 ");
+            preparedStatement = connection.prepareStatement("SELECT * FROM (CONSULTAS INNER JOIN MEDICOS ON CONSULTAS.MEDICO = MEDICOS.DNI) LEFT JOIN PACIENTES ON CONSULTAS.PACIENTE = PACIENTES.DNI WHERE CONSULTAS.FECHA BETWEEN ? AND ? AND MEDICOS.ACTIVO = ? AND STATUS = 0 ");
             System.out.println(preparedStatement);
             preparedStatement.setDate(1, Date.valueOf(start));
             preparedStatement.setDate(2, Date.valueOf(end));

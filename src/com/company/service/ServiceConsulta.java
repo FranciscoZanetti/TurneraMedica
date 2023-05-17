@@ -173,6 +173,20 @@ public class ServiceConsulta {
         }
     }
     
+    public int recaudacionByMedicoBetween(int dni, LocalDate start, LocalDate end) throws ServiceException{
+        ArrayList<Consulta> consultas = new ArrayList<>();
+        int recaudacion = 0;
+        try{
+            consultas = searchAllBetweenByMedico(dni, start, end);
+            for (Consulta consulta : consultas){
+                recaudacion += consulta.getPrecio();
+            }
+            return recaudacion;
+        }catch(ServiceException exception){
+            throw new ServiceException(exception.getMessage());
+        }
+    }
+    
     public ArrayList<Consulta> searchAllByMedico(int dni, int status) throws ServiceException{
         ArrayList<Consulta> consultas = new ArrayList<>();
         try {
@@ -181,6 +195,20 @@ public class ServiceConsulta {
             return consultas;
         }catch (DAOException exception){
             throw new ServiceException("No se pudieron encontrar resultados");
+        }
+    }
+    
+    public int recaudacionByMedico(int dni) throws ServiceException{
+        ArrayList<Consulta> consultas = new ArrayList<>();
+        int recaudacion = 0;
+        try{
+            consultas = searchAllByMedico(dni, 0);
+            for (Consulta consulta : consultas){
+                recaudacion += consulta.getPrecio();
+            }
+            return recaudacion;
+        }catch(ServiceException exception){
+            throw new ServiceException(exception.getMessage());
         }
     }
     

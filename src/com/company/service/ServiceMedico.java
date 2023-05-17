@@ -69,30 +69,42 @@ public class ServiceMedico {
     }
     
     public void manageActivation(int activo, int dni) throws ServiceException{
-        try{
-            daoMedico.manageActivation(activo, dni);
-        }catch (DAOException exception){
-            throw new ServiceException(exception.getMessage());
+        if (activo == 1){
+            try{
+                daoMedico.manageActivation(activo, dni);
+            }catch (DAOException exception){
+                throw new ServiceException(exception.getMessage());
+            }
+        }
+        else{
+            try{
+                daoMedico.manageActivation(activo, dni);
+                ServiceConsultorioMedico serviceConsultorioMedico = new ServiceConsultorioMedico();
+                try{
+                    serviceConsultorioMedico.deleteByMedico(dni);
+                    ServiceConsulta serviceConsulta = new ServiceConsulta();
+                    try{
+                        serviceConsulta.deleteByMedico(dni);
+                    }catch(ServiceException exception){
+                        throw new ServiceException(exception.getMessage());
+                    }
+                }catch(ServiceException exception){
+                    throw new ServiceException(exception.getMessage());
+                }
+            }catch (ServiceException | DAOException exception){
+                throw new ServiceException(exception.getMessage());
+            }
         }
     }
     
     public Medico search(int primaryKey) throws ServiceException{
         Medico medico = null;
         try{
-            try{
-                ValidarNumeroPositivo validarNumeroPositivo = new ValidarNumeroPositivo(primaryKey);
-            }catch (ServiceException exception){
-                throw new ServiceException(exception.getMessage());
-            }
-            try{
-                medico = daoMedico.search(primaryKey);
-            }catch (DAOException exception){
-                throw new ServiceException("No se pudieron encontrar resultados");
-            }
-        }catch (ServiceException exception){
-            throw new ServiceException(exception.getMessage());
-        }finally {
+            ValidarNumeroPositivo validarNumeroPositivo = new ValidarNumeroPositivo(primaryKey);
+            medico = daoMedico.search(primaryKey);
             return medico;
+        }catch (DAOException | ServiceException exception){
+            throw new ServiceException(exception.getMessage());
         }
     }
     
@@ -101,6 +113,23 @@ public class ServiceMedico {
         try {
             medicos = daoMedico.searchAll(activo);
 //            return medicos;
+        }catch (DAOException exception){
+            throw new ServiceException("No se pudieron encontrar resultados");
+        }
+        finally{
+            return medicos;
+        }
+    }
+    
+    public ArrayList<Medico> searchAllActiveInactive() throws ServiceException{
+        ArrayList<Medico> medicos1 = new ArrayList<>();
+        ArrayList<Medico> medicos2 = new ArrayList<>();
+        ArrayList<Medico> medicos = new ArrayList<>();
+        try {
+            medicos1 = daoMedico.searchAll(1);
+            medicos2 = daoMedico.searchAll(0);
+            medicos.addAll(medicos1);
+            medicos.addAll(medicos2);
         }catch (DAOException exception){
             throw new ServiceException("No se pudieron encontrar resultados");
         }

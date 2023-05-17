@@ -51,7 +51,7 @@ public class ServiceConsultorioMedico {
     
     public void deleteByMedico(int dni) throws ServiceException{
         try{
-            daoConsultorioMedico.delete(dni);
+            daoConsultorioMedico.deleteByMedico(dni);
         }catch (DAOException exception){
             throw new ServiceException(exception.getMessage());
         }
