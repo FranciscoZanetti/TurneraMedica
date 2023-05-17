@@ -4814,7 +4814,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     
     private ArrayList<Medico> searchAllMedicos(int activo){
         ServiceMedico serviceMedico = new ServiceMedico();
-        ArrayList<Medico> medicos = null;
+        ArrayList<Medico> medicos = new ArrayList<>();
         try{
             medicos = serviceMedico.searchAll(activo);
         }
@@ -4826,7 +4826,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     
     private ArrayList<Medico> searchAllMedicosByApellido(String apellido, int activo){
         ServiceMedico serviceMedico = new ServiceMedico();
-        ArrayList<Medico> medicos = null;
+        ArrayList<Medico> medicos = new ArrayList<>();
         try{
             medicos = serviceMedico.searchAllByApellido(activo, apellido);
         }
@@ -4848,7 +4848,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     
     private ArrayList<ConsultorioMedico> searchAllConsultoriosMedicosByDNI(int dni){
         ServiceConsultorioMedico serviceConsultorioMedico = new ServiceConsultorioMedico();
-        ArrayList<ConsultorioMedico> consultoriosMedicos = null;
+        ArrayList<ConsultorioMedico> consultoriosMedicos = new ArrayList<>();
         try{
             consultoriosMedicos = serviceConsultorioMedico.searchAll(dni);
         }catch(ServiceException exception){
@@ -4859,7 +4859,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     
     private ArrayList<Consulta> searchAllConsultasByMedico(int dni, int status){
         ServiceConsulta serviceConsulta = new ServiceConsulta();
-        ArrayList<Consulta> consultas = null;
+        ArrayList<Consulta> consultas = new ArrayList<>();
         try{
             consultas = serviceConsulta.searchAllByMedico(dni, status);
         }catch(ServiceException exception){
@@ -4870,7 +4870,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     
     private ArrayList<Consulta> searchAllConsultasByPaciente(int dni, int status){
         ServiceConsulta serviceConsulta = new ServiceConsulta();
-        ArrayList<Consulta> consultas = null;
+        ArrayList<Consulta> consultas = new ArrayList<>();
         try{
             consultas = serviceConsulta.searchAllByPaciente(dni, status);
         }catch(ServiceException exception){
@@ -4929,6 +4929,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
             ArrayList<Consulta> consultasNew = serviceConsulta.generateArrayConsultas(paciente, consultas, consultoriosMedicos);
             
             for (Consulta consulta : consultasNew){
+                System.out.println("\nCONSULTA" + consulta + "\n");
                 ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta, "paciente");
                 panel.setPanelEventListener(this);
                 panel.addMouseListener("reservar");
@@ -4951,6 +4952,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                 for (Consulta consulta : consultasNew){
                     if (param[0].equals(consulta.getConsultorio())){
                         System.out.println("FLAG 80");
+                        System.out.println("\nCONSULTA" + consulta + "\n");
                         ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta, "paciente");
                         panel.setPanelEventListener(this);
                         panel.addMouseListener("reservar");
@@ -4960,6 +4962,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                 }
             }else{
                 for (Consulta consulta : consultasNew){
+                    System.out.println("\nCONSULTA" + consulta + "\n");
                     ConsultaInfoPanel panel = new ConsultaInfoPanel(consulta, "paciente");
                     panel.setPanelEventListener(this);
                     panel.addMouseListener("reservar");

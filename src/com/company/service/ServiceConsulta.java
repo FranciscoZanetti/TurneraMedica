@@ -13,6 +13,7 @@ import com.company.validaciones.ValidarLocalDate;
 import com.company.validaciones.ValidarNumeroPositivo;
 import com.company.validaciones.ValidarSoloLetras;
 import java.sql.Date;
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -275,6 +276,8 @@ public class ServiceConsulta {
                     .toLocalDate();
             for (ConsultorioMedico consultorioMedico : consultoriosMedicos){
                 String dayOfWeek = new SimpleDateFormat("EEEE", Locale.forLanguageTag("es-AR")).format(Date.valueOf(date));
+                String dayOfWeekNormalized = Normalizer.normalize(dayOfWeek, Normalizer.Form.NFD);
+                dayOfWeek = dayOfWeekNormalized.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
                 System.out.println(dayOfWeek + " | " + consultorioMedico.getDia().toLowerCase());
                 System.out.println(dayOfWeek.equals(consultorioMedico.getDia().toLowerCase()));
                 if (dayOfWeek.equals(consultorioMedico.getDia().toLowerCase())){
