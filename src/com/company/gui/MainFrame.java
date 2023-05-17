@@ -3371,36 +3371,50 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
             JOptionPane.showMessageDialog(null, "Complete todos los campos", "Advertencia", JOptionPane.PLAIN_MESSAGE);
         }else{
             Integer dni = Integer.parseInt(RegisterPacienteDNI.getText());
-            String password = RegisterPacientePassword.getText();
-            String password2 = RegisterPacientePasswordRepeat.getText();
-            String nombre = RegisterPacienteNombre.getText();
-            String apellido = RegisterPacienteApellido.getText();
-            String naciemiento = RegisterPacienteNacimiento.getText();
-            String obraSocial = RegisterPacienteObraSocial.getSelectedItem().toString();
-            String sexo = null;
-            if (RegisterPacienteHombre.isSelected()){
-                sexo = "hombre";
-            }
-            if (RegisterPacienteMujer.isSelected()){
-                sexo = "mujer";
-            }
-            Paciente paciente = new Paciente();
-            paciente.setDNI(dni);
-            paciente.setPassword(password);
-            paciente.setNombre(nombre);
-            paciente.setApellido(apellido);
-            paciente.setNacimiento(LocalDate.parse(naciemiento));
-            paciente.setSexo(sexo);
-            paciente.setObrasocial(obraSocial);
+            Paciente pacienteSearch = null;
             try{
-                ServicePaciente servicePaciente = new ServicePaciente();
-                servicePaciente.create(paciente);
-                System.out.println(paciente.toString());
-                clearPaciente();
-                switchLayeredPane(LoginRegisterLayeredPanel, RightLoginPanel);
-            }catch (ServiceException exception){
-                JOptionPane.showMessageDialog(null, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                pacienteSearch = servicePaciente.search(dni);
+            }catch(ServiceException exception){
+                JOptionPane.showMessageDialog(null, "Ocurrió un error en el servidor", "Error", JOptionPane.ERROR_MESSAGE);
+            }finally{
+                if (pacienteSearch == null){
+                    String password = RegisterPacientePassword.getText();
+                    String password2 = RegisterPacientePasswordRepeat.getText();
+                    
+                    String nombre = RegisterPacienteNombre.getText();
+                    String apellido = RegisterPacienteApellido.getText();
+                    String naciemiento = RegisterPacienteNacimiento.getText();
+                    String obraSocial = RegisterPacienteObraSocial.getSelectedItem().toString();
+                    String sexo = null;
+                    if (RegisterPacienteHombre.isSelected()){
+                        sexo = "hombre";
+                    }
+                    if (RegisterPacienteMujer.isSelected()){
+                        sexo = "mujer";
+                    }
+                    Paciente paciente = new Paciente();
+                    paciente.setDNI(dni);
+                    paciente.setPassword(password);
+                    paciente.setNombre(nombre);
+                    paciente.setApellido(apellido);
+                    paciente.setNacimiento(LocalDate.parse(naciemiento));
+                    paciente.setSexo(sexo);
+                    paciente.setObrasocial(obraSocial);
+                    try{
+                        ServicePaciente servicePaciente = new ServicePaciente();
+                        servicePaciente.create(paciente);
+                        System.out.println(paciente.toString());
+                        clearPaciente();
+                        switchLayeredPane(LoginRegisterLayeredPanel, RightLoginPanel);
+                    }catch (ServiceException exception){
+                        JOptionPane.showMessageDialog(null, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "El DNI ingresado ya existe.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
+            
         }
     }//GEN-LAST:event_RegisterPacienteButtonPanelMousePressed
 
@@ -3452,30 +3466,33 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         System.out.println("Flag 2");
         try{
             Persona persona = servicePersona.login(Integer.parseInt(IDLogin.getText()), PasswordLogin.getText());
-            if (persona instanceof Paciente){
-                pacienteLogged = (Paciente)persona;
-                populateProximasConsultas();
-                switchLayeredPane(CenterLeftMenuLayeredPane, CenterLeftMenu);
-                Username.setText("Paciente");
-                switchLayeredPane(ContentLayeredPane, ProximosTurnosPanel);
-                System.out.println(pacienteLogged.toString());
+            if (persona != null){
+                if (persona instanceof Paciente){
+                    pacienteLogged = (Paciente)persona;
+                    populateProximasConsultas();
+                    switchLayeredPane(CenterLeftMenuLayeredPane, CenterLeftMenu);
+                    Username.setText("Paciente");
+                    switchLayeredPane(ContentLayeredPane, ProximosTurnosPanel);
+                    System.out.println(pacienteLogged.toString());
+                }
+                if (persona instanceof Medico){
+                    medicoLogged = (Medico)persona;
+                    switchLayeredPane(CenterLeftMenuLayeredPane, CenterLeftMenuMedico);
+                    Username.setText("Medico");
+                    switchLayeredPane(ContentLayeredPane, ProximosTurnosMedicoPanel);
+                    populateProximasConsultasMedico("init");
+                    System.out.println(medicoLogged.toString());
+                }
+                setCursor(NORMAL);
+                IDLogin.setText("");
+                PasswordLogin.setText("");
+                switchLayeredPane(MainLayeredPane, DashboardPanel);
             }
-            if (persona instanceof Medico){
-                medicoLogged = (Medico)persona;
-                switchLayeredPane(CenterLeftMenuLayeredPane, CenterLeftMenuMedico);
-                Username.setText("Medico");
-                switchLayeredPane(ContentLayeredPane, ProximosTurnosMedicoPanel);
-                populateProximasConsultasMedico("init");
-                System.out.println(medicoLogged.toString());
+            else{
+                JOptionPane.showMessageDialog(null, "Los datos ingresados son incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            setCursor(NORMAL);
-            IDLogin.setText("");
-            PasswordLogin.setText("");
-            switchLayeredPane(MainLayeredPane, DashboardPanel);
-            //switchLayeredPane(ContentLayeredPane, ProximosTurnosPanel);
-            //populateProximasConsultas();
         }catch(ServiceException exception){
-            JOptionPane.showMessageDialog(null, exception.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocurrió un error en el servidor", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ButtonPanelMousePressed
 
@@ -3525,6 +3542,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
 
     private void ReservarTurnoMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReservarTurnoMenuMousePressed
         switchLayeredPane(ContentLayeredPane, ReservarTurnoPanel);
+        populateMedicoComboBox();
         populateConsultasDisponibles("init");
     }//GEN-LAST:event_ReservarTurnoMenuMousePressed
 
@@ -3747,8 +3765,12 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     }//GEN-LAST:event_ProximosTurnosMedicoFechaComboBoxMouseExited
 
     private void ProximosTurnosMedicoFechaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProximosTurnosMedicoFechaComboBoxActionPerformed
-        String param = ProximosTurnosMedicoFechaComboBox.getSelectedItem().toString();
-        populateProximasConsultasMedico(param);
+        if (ProximosTurnosMedicoFechaComboBox.getItemCount() > 0){
+            String param = ProximosTurnosMedicoFechaComboBox.getSelectedItem().toString();
+            populateProximasConsultasMedico(param);
+        }
+//        String param = ProximosTurnosMedicoFechaComboBox.getSelectedItem().toString();
+//        populateProximasConsultasMedico(param);
     }//GEN-LAST:event_ProximosTurnosMedicoFechaComboBoxActionPerformed
 
     private void ProximosTurnosMenuMedicoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProximosTurnosMenuMedicoMouseEntered
@@ -4696,12 +4718,29 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         if (RegisterPacienteMujer.isSelected()){
             sexo = "mujer";
         }
-//        System.out.print(dni + " " + password + " " + password2 + " " + nombre + " " + apellido + " " + naciemiento + " " + sexo);
-        if (dni == "" || password == "" || !password.equals(password2) || nombre == "" || apellido == "" || naciemiento == "" || sexo == null){
-            return false;
-        }else{
-            return true;
+        if (!password.isEmpty() && !dni.isEmpty() && !password2.isEmpty() && !nombre.isEmpty() && !apellido.isEmpty() && !naciemiento.isEmpty() && sexo != null){
+            if (password.equals(password2)){
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyy-MM-dd");
+                try{
+                    LocalDate localDate = LocalDate.parse(naciemiento, dateTimeFormatter);
+                    return true;
+                }catch(DateTimeParseException exception){
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
         }
+        else{
+            return false;
+        }
+//        System.out.print(dni + " " + password + " " + password2 + " " + nombre + " " + apellido + " " + naciemiento + " " + sexo);
+//        if (dni == "" || password == "" || !password.equals(password2) || nombre == "" || apellido == "" || naciemiento == "" || sexo == null){
+//            return false;
+//        }else{
+//            return true;
+//        }
     }
 
     private void clearPaciente() {
@@ -5033,6 +5072,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
             ProximosTurnosMedicoFechaComboBox.addItem(fecha);
         }
         ProximosTurnosMedicoFechaComboBox.addItem("Fechas posteriores");
+        ProximosTurnosMedicoFechaComboBox.setSelectedIndex(0);
     }
     
     public void populateAdministrarMedicos(int activo, String... apellido){

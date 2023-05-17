@@ -79,7 +79,7 @@ public class ServiceConsulta {
     
     public void deleteByMedico(int medico) throws ServiceException{
         try{
-            daoConsulta.delete(medico);
+            daoConsulta.deleteByMedico(medico);
         }catch (DAOException exception){
             throw new ServiceException(exception.getMessage());
         }

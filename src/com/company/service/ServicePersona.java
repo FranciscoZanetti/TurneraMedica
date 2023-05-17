@@ -35,20 +35,16 @@ public class ServicePersona {
     public Persona login(int primaryKey, String password) throws ServiceException{
         Persona persona = null;
         try{
-            ValidarNumeroPositivo validarNumeroPositivo = new ValidarNumeroPositivo(primaryKey);
-        }catch (ServiceException exception){
-            throw new ServiceException(exception.getMessage());
-        }
-        try{
             persona = daoPaciente.login(primaryKey, password);
         }catch (DAOException exception){
             throw new ServiceException(exception.getMessage());
-        }
-        if (persona == null){
-            try{
-                persona = daoMedico.login(primaryKey, password);
-            }catch (DAOException exception){
-                throw new ServiceException(exception.getMessage());
+        }finally{
+            if (persona == null){
+                try{
+                    persona = daoMedico.login(primaryKey, password);
+                }catch (DAOException exception){
+                    throw new ServiceException(exception.getMessage());
+                }
             }
         }
         return persona;
