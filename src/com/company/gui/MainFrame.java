@@ -375,7 +375,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         AdminPanelLayout.setHorizontalGroup(
             AdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdminPanelLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addComponent(jLabel30)
                 .addGap(35, 35, 35))
         );
@@ -384,7 +384,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
             .addGroup(AdminPanelLayout.createSequentialGroup()
                 .addGap(179, 179, 179)
                 .addComponent(jLabel30)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         PacientePanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -421,7 +421,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                     .addGroup(PacientePanelLayout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(jLabel33)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         PacientePanelLayout.setVerticalGroup(
             PacientePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,7 +430,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                 .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel33)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout InitContenedorPanelLayout = new javax.swing.GroupLayout(InitContenedorPanel);
@@ -1118,14 +1118,14 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         EditarMedicoGuardarButton.setBackground(new java.awt.Color(0, 204, 153));
         EditarMedicoGuardarButton.setForeground(new java.awt.Color(51, 51, 51));
         EditarMedicoGuardarButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                EditarMedicoGuardarButtonMousePressed(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditarMedicoGuardarButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 EditarMedicoGuardarButtonMouseExited(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                EditarMedicoGuardarButtonMouseEntered(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EditarMedicoGuardarButtonMousePressed(evt);
             }
         });
 
@@ -1262,14 +1262,14 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
 
         EditarMedicoConsultoriosMedicosGuardarButton.setBackground(new java.awt.Color(0, 204, 153));
         EditarMedicoConsultoriosMedicosGuardarButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                EditarMedicoConsultoriosMedicosGuardarButtonMousePressed(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosGuardarButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 EditarMedicoConsultoriosMedicosGuardarButtonMouseExited(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                EditarMedicoConsultoriosMedicosGuardarButtonMouseEntered(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                EditarMedicoConsultoriosMedicosGuardarButtonMousePressed(evt);
             }
         });
 
@@ -1953,8 +1953,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                 .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EditarMedicoDesactivarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
+                        .addComponent(EditarMedicoDesactivarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EditarMedicoPanelLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addGroup(EditarMedicoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1986,8 +1985,8 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(EditarMedicoConsultoriosMedicosContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(EditarMedicoCancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))))
+                        .addComponent(EditarMedicoCancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
         );
 
         ContentLayeredPane.add(EditarMedicoPanel, "card7");
@@ -2354,7 +2353,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
             .addGroup(ProximosTurnosCancelarButtonLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel26)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         ProximosTurnosCancelarButtonLayout.setVerticalGroup(
             ProximosTurnosCancelarButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2394,7 +2393,7 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
                 .addComponent(ProximoTurnoAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(ProximosTurnosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ProximosTurnosCancelarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ProximosTurnosCancelarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(ProximosTurnosMantenerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
@@ -2710,11 +2709,6 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         RegisterPacienteDNI.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         RegisterPacienteDNI.setForeground(new java.awt.Color(51, 51, 51));
         RegisterPacienteDNI.setBorder(null);
-        RegisterPacienteDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterPacienteDNIActionPerformed(evt);
-            }
-        });
         RegisterPacienteDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RegisterPacienteDNIKeyPressed(evt);
@@ -3333,10 +3327,6 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
         PasswordLogin.setText("");
         switchLayeredPane(LoginRegisterLayeredPanel, RightRegisterPanel);
     }//GEN-LAST:event_RegisterOptionLoginMousePressed
-
-    private void RegisterPacienteDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterPacienteDNIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RegisterPacienteDNIActionPerformed
 
     private void RegisterPacienteButtonPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterPacienteButtonPanelMouseEntered
         Color color = new Color(90, 204, 153);
@@ -4756,22 +4746,30 @@ public class MainFrame extends javax.swing.JFrame implements PanelEventListener{
     }
 
     private void validateOnlyDigits(java.awt.event.KeyEvent evt) {
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c) && (evt.getKeyCode() != KeyEvent.VK_BACK_SPACE)){
+        int keyCode = evt.getKeyCode();
+
+        if (Character.isDigit(evt.getKeyChar()) || keyCode == KeyEvent.VK_BACK_SPACE) {
+            // Permitir la entrada
+        } else {
             evt.consume();
         }
     }
 
+
     private void validateOnlyLettersOrDigits(java.awt.event.KeyEvent evt) {
-        char c = evt.getKeyChar();
-        if (!Character.isLetterOrDigit(c) && (evt.getKeyCode() != KeyEvent.VK_BACK_SPACE)){
+//        char c = evt.getKeyChar();
+//        if (!Character.isLetterOrDigit(c) && (evt.getKeyCode() != KeyEvent.VK_BACK_SPACE)){
+//            evt.consume();
+//        }
+        int keyCode = evt.getKeyCode();
+        if (!Character.isLetterOrDigit(evt.getKeyChar()) && !(keyCode == KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
         }
     }
 
     private void validateNames(java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
-        if ( (!Character.isLetter(c)) && (!Character.isSpaceChar(c)) && (String.valueOf(c) != "-") ) {
+        if ( (!Character.isLetter(c)) && (!Character.isSpaceChar(c)) && (String.valueOf(c) != "-") && (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
         }
     }

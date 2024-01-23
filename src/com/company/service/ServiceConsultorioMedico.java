@@ -6,6 +6,7 @@ package com.company.service;
 
 import com.company.dao.DAOException;
 import com.company.dao.DAOConsultorioMedico;
+import com.company.dao.DAOMedico;
 import com.company.entidades.ConsultorioMedico;
 import com.company.validaciones.ValidarLocalDate;
 import com.company.validaciones.ValidarNumeroPositivo;
@@ -19,14 +20,17 @@ import java.util.HashSet;
  */
 public class ServiceConsultorioMedico {
     private DAOConsultorioMedico daoConsultorioMedico;
+    private DAOMedico daoMedico;
     
     public ServiceConsultorioMedico(){
         daoConsultorioMedico = new DAOConsultorioMedico();
+        daoMedico = new DAOMedico();
     }
     
     public void create(ConsultorioMedico consultorioMedico) throws ServiceException{
         try{
             daoConsultorioMedico.create(consultorioMedico);
+            daoMedico.manageActivation(1, consultorioMedico.getMedico().getDNI());
         }catch (DAOException exception){
             throw new ServiceException(exception.getMessage());
         }

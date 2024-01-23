@@ -182,7 +182,7 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                                      <EmptySpace pref="46" max="32767" attributes="0"/>
                                       <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   </Group>
@@ -193,7 +193,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
                                       <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="178" max="32767" attributes="0"/>
+                                      <EmptySpace pref="174" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -241,7 +241,7 @@
                                               <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="83" max="32767" attributes="0"/>
+                                      <EmptySpace pref="85" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -252,7 +252,7 @@
                                       <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="151" max="32767" attributes="0"/>
+                                      <EmptySpace pref="143" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1348,7 +1348,6 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="EditarMedicoDesactivarButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -1389,9 +1388,9 @@
                                           <Component id="EditarMedicoConsultoriosMedicosContenedor" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace pref="41" max="32767" attributes="0"/>
                                           <Component id="EditarMedicoCancelarButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1617,9 +1616,9 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoGuardarButtonMousePressed"/>
-                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoGuardarButtonMouseExited"/>
                             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoGuardarButtonMouseEntered"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoGuardarButtonMouseExited"/>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoGuardarButtonMousePressed"/>
                           </Events>
 
                           <Layout>
@@ -1860,9 +1859,9 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoConsultoriosMedicosGuardarButtonMousePressed"/>
-                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoConsultoriosMedicosGuardarButtonMouseExited"/>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoConsultoriosMedicosGuardarButtonMouseEntered"/>
+                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoConsultoriosMedicosGuardarButtonMouseExited"/>
+                                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EditarMedicoConsultoriosMedicosGuardarButtonMousePressed"/>
                               </Events>
 
                               <Layout>
@@ -3484,7 +3483,7 @@
                                   <Component id="ProximoTurnoAEliminar" min="-2" pref="72" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="ProximosTurnosCancelarButton" max="32767" attributes="0"/>
+                                      <Component id="ProximosTurnosCancelarButton" pref="33" max="32767" attributes="0"/>
                                       <Component id="ProximosTurnosMantenerButton" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -3640,7 +3639,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                       <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                                      <EmptySpace pref="21" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -4376,7 +4375,6 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterPacienteDNIActionPerformed"/>
                                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RegisterPacienteDNIKeyPressed"/>
                               </Events>
                             </Component>
