@@ -32,7 +32,9 @@ https://drive.google.com/file/d/1idkSEoHW2NF95usO4Gf3WK7x_An1-ykz/view?usp=shari
 ## Ejecucion / Execution
 
 Se recomienda importar la base de datos adjuntada en el archivo .sql.
+La clase Main se encuentra en com.company.gui.MainFrame.java.
 
 ### English
 
 It is recommended to import the attached database using the provided .sql file.
+Main class is located in com.company.gui.MainFrame.java.
